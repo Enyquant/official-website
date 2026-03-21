@@ -15,8 +15,8 @@ interface ISEOProps {
   author?: string;
 }
 
-const SITE_URL = 'https://energyquant.org';
-const DEFAULT_IMAGE = `${SITE_URL}/images/og/og-default.jpg`;
+const SITE_URL = 'https://enyquant.com';
+const DEFAULT_IMAGE = `${SITE_URL}/images/og/og-default.svg`;
 
 const SEO: React.FC<ISEOProps> = ({
   title,

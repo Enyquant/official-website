@@ -1,5 +1,20 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="EnergyQuant logo">
-  <rect width="512" height="512" rx="20" fill="#0f2742"/>
-  <path d="M92 120h320v56H92zM92 228h240v56H92zM92 336h320v56H92z" fill="#5fa8ff"/>
-  <text x="256" y="290" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="120" font-weight="800" fill="#ffffff">EQ</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-label="任能量化 EnergyQuant Research">
+  <defs>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffd874" />
+      <stop offset="100%" stop-color="#e6b33a" />
+    </linearGradient>
+  </defs>
+  <rect x="12" y="12" width="1256" height="296" rx="28" fill="#ffffff" />
+  <g transform="translate(30 42)" fill="#12396c">
+    <path d="M0 14h170l-18 38H0z" />
+    <path d="M0 82h170l-18 38H0z" />
+    <path fill-rule="evenodd" d="M258 0h122c64 0 114 50 114 114v38c0 64-50 114-114 114H258c-64 0-114-50-114-114v-38C144 50 194 0 258 0zm0 54c-33 0-60 27-60 60v38c0 33 27 60 60 60h122c33 0 60-27 60-60v-38c0-33-27-60-60-60H258z" />
+    <path d="M331 157h76l91 91h-101l-66-66z" />
+    <path d="M379 192h54l74 74h-81l-47-47z" fill="url(#accent)" />
+  </g>
+  <g transform="translate(584 48)">
+    <text x="0" y="98" font-family="Noto Sans SC, Inter, Arial, sans-serif" font-size="98" font-weight="800" fill="#12396c">任能量化</text>
+    <text x="2" y="180" font-family="Space Grotesk, Inter, Arial, sans-serif" font-size="58" font-weight="700" fill="#12396c">EnergyQuant Research</text>
+  </g>
 </svg>

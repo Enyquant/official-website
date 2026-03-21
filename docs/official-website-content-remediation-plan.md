@@ -8,7 +8,7 @@ Status: active
 Last-Updated: 2026-03-09
 
 ## Objective
-Turn `official-website` into the first public-safe launch version for 任能科技 by:
+Turn `official-website` into the first public-safe launch version for 任能量化 by:
 1. replacing scattered mock copy with one centralized typed content source,
 2. restructuring the site into `Corporate + Solutions`,
 3. preserving the stronger original Home, Projects, and About copy inside the new structure instead of flattening it into low-signal launch prose,
@@ -48,7 +48,7 @@ Forbidden for the launch version:
 ## Implementation Milestones
 ### M1: Centralize content and rename public brand
 1. create one typed content source for navigation, page copy, SEO, and contact data,
-2. switch public site naming to 任能 / 任能科技,
+2. switch public site naming to 任能量化 / EnergyQuant Research,
 3. remove legacy brand copy from pages and default SEO output.
 
 Exit criteria:

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
   --background: 4 10 19;
@@ -38,9 +38,9 @@
   --sidebar-border: 23 41 66;
   --sidebar-ring: 186 100% 63%;
   --font-sans: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  --font-display: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  --font-display: 'Manrope', 'Noto Sans SC', sans-serif;
   --font-serif: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-  --font-mono: 'JetBrains Mono', 'Space Grotesk', monospace;
+  --font-mono: 'JetBrains Mono', 'Manrope', monospace;
   --radius: 0.125rem;
   --shadow-2xs: 0px 1px 2px 0px hsl(210 40% 5% / 0.28);
   --shadow-xs: 0px 2px 6px 0px hsl(210 40% 5% / 0.32);

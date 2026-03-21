@@ -13,7 +13,7 @@ const pageFiles = [
   path.join(pagesRoot, 'ContactPage', 'ContactPage.tsx'),
 ];
 
-describe('site pages launch contract', () => {
+describe('site pages public-safe launch contract', () => {
   it.each(pageFiles)('%s imports centralized site content', (filePath) => {
     const content = fs.readFileSync(filePath, 'utf8');
 
@@ -26,46 +26,53 @@ describe('site pages launch contract', () => {
     expect(content).not.toMatch(/mockProjects|mockResources|mockNewsData/);
   });
 
-  it('contact page no longer renders fake form workflow', () => {
-    const content = fs.readFileSync(path.join(pagesRoot, 'ContactPage', 'ContactPage.tsx'), 'utf8');
-
-    expect(content).not.toMatch(/useForm|zodResolver|toast\.success|setTimeout/);
-  });
-  it('home page renders restored hero and evidence sections from centralized content', () => {
+  it('home page no longer references the removed evidence block', () => {
     const content = fs.readFileSync(path.join(pagesRoot, 'HomePage', 'HomePage.tsx'), 'utf8');
 
     expect(content).toContain('home.hero.slogan');
-    expect(content).toContain('home.evidence');
+    expect(content).toContain('projects.solutions');
+    expect(content).not.toContain('home.evidence');
   });
 
-  it('projects page renders restored portfolio sections from centralized content', () => {
+  it('projects page renders three solution sections instead of case-study buckets and stats', () => {
     const content = fs.readFileSync(path.join(pagesRoot, 'ProjectsPage', 'ProjectsPage.tsx'), 'utf8');
 
-    expect(content).toContain('projects.caseStudiesTitle');
-    expect(content).toContain('projects.solutionsTitle');
+    expect(content).toContain('projects.solutions.map');
+    expect(content).not.toContain('caseStudies');
+    expect(content).not.toContain('projects.stats');
+    expect(content).not.toContain('projects.caseStudiesTitle');
   });
 
-  it('news page treats the route as a milestones list instead of a dated article detail', () => {
+  it('news page remains a milestones list and excludes article metadata behavior', () => {
     const content = fs.readFileSync(path.join(pagesRoot, 'NewsPage', 'NewsPage.tsx'), 'utf8');
 
+    expect(content).toContain('news.items.map');
     expect(content).not.toContain('type="article"');
     expect(content).not.toContain('publishedTime=');
     expect(content).not.toContain('modifiedTime=');
   });
 
-  it('about page renders restored company and mission sections from centralized content', () => {
-    const content = fs.readFileSync(path.join(pagesRoot, 'AboutPage', 'AboutPage.tsx'), 'utf8');
+  it('knowledge page renders knowledge tracks and topic lists instead of placeholder cards', () => {
+    const content = fs.readFileSync(path.join(pagesRoot, 'KnowledgeBasePage', 'KnowledgeBasePage.tsx'), 'utf8');
 
-    expect(content).toContain('about.company');
-    expect(content).toContain('about.mission');
+    expect(content).toContain('knowledge.tracks.map');
+    expect(content).toContain('track.topics.map');
+    expect(content).not.toContain('knowledge.upcomingItems');
   });
 
-  it('removes template-like headings and filler from about/contact page shells', () => {
-    const about = fs.readFileSync(path.join(pagesRoot, 'AboutPage', 'AboutPage.tsx'), 'utf8');
-    const contact = fs.readFileSync(path.join(pagesRoot, 'ContactPage', 'ContactPage.tsx'), 'utf8');
+  it('about page no longer renders quantitative counters or market project totals', () => {
+    const content = fs.readFileSync(path.join(pagesRoot, 'AboutPage', 'AboutPage.tsx'), 'utf8');
 
-    expect(about).not.toContain('about.tagline');
-    expect(contact).not.toContain('Good reasons to reach out');
-    expect(contact).not.toContain('Public-info note');
+    expect(content).not.toContain('CountUpNumber');
+    expect(content).not.toContain('about.market.totalProjects');
+    expect(content).not.toContain('about.research.algorithm.items');
+    expect(content).not.toContain('about.research.engineering.items');
+  });
+
+  it('contact page keeps direct contact and does not reintroduce fake forms', () => {
+    const content = fs.readFileSync(path.join(pagesRoot, 'ContactPage', 'ContactPage.tsx'), 'utf8');
+
+    expect(content).toContain('contact.inquiryTypes');
+    expect(content).not.toMatch(/useForm|zodResolver|toast\.success|setTimeout/);
   });
 });
