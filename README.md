@@ -23,6 +23,26 @@ npm run preview:client:win
 
 Open: `http://127.0.0.1:4173`
 
+## Production Build
+
+Default production build is now static-client only:
+
+```bash
+npm run build
+```
+
+Output directory:
+
+```bash
+dist/client
+```
+
+If a full NestJS + client packaging build is needed for non-Cloudflare environments:
+
+```bash
+npm run build:fullstack
+```
+
 ## Full Local Dev (Windows)
 
 Set required environment variables in `.env`:

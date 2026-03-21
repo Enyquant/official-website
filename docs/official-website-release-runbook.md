@@ -45,8 +45,9 @@ Expected:
 7. Chinese and English navigation, footer, and SEO titles stay aligned.
 
 ## Build Output
-1. `npm run build` produces the distributable bundle under `dist/`.
-2. If server packaging is required, follow the existing deployment notes in `DEPLOY_ENERGYQUANT.md`.
+1. `npm run build` produces the static release bundle under `dist/client/`.
+2. For Cloudflare Pages, use build command `npm run build` and output directory `dist/client`.
+3. If server packaging is required, use `npm run build:fullstack` and follow `DEPLOY_ENERGYQUANT.md`.
 
 ## Release Steps
 1. Run the release gate commands.
