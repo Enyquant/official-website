@@ -31,78 +31,290 @@ export interface NewsItem {
   summary: LocalizedText;
 }
 
-export interface HomeCapabilityItem {
-  key: string;
+export interface SolutionTrack {
+  key: 'vpp' | 'algo' | 'bess';
   title: LocalizedText;
   subtitle: LocalizedText;
-  description: LocalizedText;
-  metrics: LocalizedText[];
-  deliverable: LocalizedText;
+  summary: LocalizedText;
+  audience: LocalizedText[];
+  scenarios: LocalizedText[];
+  outputs: LocalizedText[];
+  value: LocalizedText;
   accent: string;
 }
 
-export interface EvidenceMetric {
+export interface KnowledgeTrack {
   key: string;
-  label: LocalizedText;
-  value: number;
-  unit: string;
-  detail: LocalizedText;
-  trend: LocalizedText;
-  accent: string;
-}
-
-export interface PortfolioItem {
-  key: string;
-  type: 'case-study' | 'solution';
-  domain: LocalizedText;
-  region: LocalizedText;
-  accent: string;
-  image: string;
   title: LocalizedText;
-  description: LocalizedText;
-  features: LocalizedText[];
-  details: {
-    background: LocalizedText;
-    solution: LocalizedText;
-    results: LocalizedText;
-  };
+  summary: LocalizedText;
+  topics: LocalizedText[];
 }
 
-export interface StatItem {
+export interface AboutNarrativeCard {
+  key: string;
+  title: LocalizedText;
+  body: LocalizedText;
+  bullets?: LocalizedText[];
+}
+
+export interface AboutListSection {
+  title: LocalizedText;
+  summary: LocalizedText;
+  items: LocalizedText[];
+}
+
+export interface AboutHighlight {
   label: LocalizedText;
-  value: string;
-}
-
-export interface NumericStatItem {
-  label: LocalizedText;
-  value: number;
-  unit: string;
-}
-
-export interface MarketPresenceItem {
-  flag: string;
-  region: LocalizedText;
-  locations: LocalizedText[];
-  projects: number;
-  highlight: boolean;
+  value: LocalizedText;
 }
 
 export const localizedText = (text: LocalizedText, language: SiteLanguage) => text[language];
 
+const solutionTracks: SolutionTrack[] = [
+  {
+    key: 'vpp',
+    title: {
+      zh: '虚拟电厂聚合',
+      en: 'Virtual Power Plant Aggregation',
+    },
+    subtitle: {
+      zh: 'VPP Aggregation',
+      en: 'VPP Aggregation',
+    },
+    summary: {
+      zh: '聚合分布式光伏、充电桩与工业负荷，参与需求响应、调峰调频与灵活性价值管理。',
+      en: 'Aggregate distributed solar, charging assets, and industrial loads to support demand response, balancing services, and flexibility value management.',
+    },
+    audience: [
+      { zh: '园区运营方', en: 'Industrial parks' },
+      { zh: '工商业用户', en: 'Commercial and industrial users' },
+      { zh: '虚拟电厂运营主体', en: 'VPP operators' },
+    ],
+    scenarios: [
+      { zh: '需求响应参与', en: 'Demand response participation' },
+      { zh: '调峰调频协同', en: 'Balancing and frequency coordination' },
+      { zh: '分布式资源聚合', en: 'Distributed resource aggregation' },
+    ],
+    outputs: [
+      { zh: '聚合策略设计', en: 'Aggregation strategy design' },
+      { zh: '调度与收益分析', en: 'Dispatch and value analysis' },
+      { zh: '项目实施支持', en: 'Project implementation support' },
+    ],
+    value: {
+      zh: '帮助灵活性资产形成可管理、可运营、可解释的市场参与能力。',
+      en: 'Build manageable, operable, and explainable market participation capability for flexible assets.',
+    },
+    accent: '#22c55e',
+  },
+  {
+    key: 'algo',
+    title: {
+      zh: '电力交易算法服务',
+      en: 'Power Market Algorithm Service',
+    },
+    subtitle: {
+      zh: 'Algo-Trading Service',
+      en: 'Algo-Trading Service',
+    },
+    summary: {
+      zh: '面向发电集团与售电公司提供现货辅助决策、报价优化、风险控制与执行支持。',
+      en: 'Provide spot-market decision support, bid optimization, risk control, and execution support for generators and retailers.',
+    },
+    audience: [
+      { zh: '发电集团', en: 'Generation groups' },
+      { zh: '售电公司', en: 'Retail electricity companies' },
+      { zh: '能源集团交易团队', en: 'Energy trading teams' },
+    ],
+    scenarios: [
+      { zh: '现货报价支持', en: 'Spot bid support' },
+      { zh: '中长期组合优化', en: 'Contract portfolio optimization' },
+      { zh: '风险敞口分析', en: 'Risk exposure analysis' },
+    ],
+    outputs: [
+      { zh: '算法服务接口', en: 'Algorithm service interfaces' },
+      { zh: '策略研究与咨询', en: 'Strategy research and advisory' },
+      { zh: '执行支持流程', en: 'Execution support workflows' },
+    ],
+    value: {
+      zh: '把市场经验、算法研究与工程系统连接起来，提升交易决策质量与执行效率。',
+      en: 'Connect market experience, algorithm research, and engineering systems to improve trading decision quality and execution efficiency.',
+    },
+    accent: '#3b82f6',
+  },
+  {
+    key: 'bess',
+    title: {
+      zh: '储能资产增值',
+      en: 'BESS Optimization',
+    },
+    subtitle: {
+      zh: 'BESS Optimization',
+      en: 'BESS Optimization',
+    },
+    summary: {
+      zh: '围绕峰谷套利、辅助服务、容量收益与需求响应，提升储能资产利用效率与运营可解释性。',
+      en: 'Improve storage asset utilization and operating explainability across arbitrage, ancillary services, capacity value, and demand response.',
+    },
+    audience: [
+      { zh: '工商业储能业主', en: 'Commercial and industrial storage owners' },
+      { zh: '源网侧储能项目方', en: 'Grid-side storage developers' },
+      { zh: '储能平台与运营团队', en: 'Storage operators and platforms' },
+    ],
+    scenarios: [
+      { zh: '峰谷价差利用', en: 'Peak-valley spread utilization' },
+      { zh: '辅助服务参与', en: 'Ancillary-service participation' },
+      { zh: '容量与调度协同', en: 'Capacity and dispatch coordination' },
+    ],
+    outputs: [
+      { zh: '收益结构诊断', en: 'Value-stack diagnostics' },
+      { zh: '运营策略建议', en: 'Operating strategy recommendations' },
+      { zh: '全生命周期管理支持', en: 'Lifecycle management support' },
+    ],
+    value: {
+      zh: '帮助储能项目建立更稳健、更可持续的运营框架，而不是依赖单一收益假设。',
+      en: 'Help storage projects build a steadier and more sustainable operating framework instead of depending on a single revenue assumption.',
+    },
+    accent: '#f59e0b',
+  },
+];
+
+const milestoneItems: NewsItem[] = [
+  {
+    date: { zh: '2024.10', en: '2024.10' },
+    category: { zh: '基金支持', en: 'Fund Support' },
+    title: {
+      zh: '获得代尔夫特能源倡议创业发展基金支持',
+      en: 'Received support from the Delft energy-initiative startup fund',
+    },
+    summary: {
+      zh: '完成早期项目支持，为后续技术验证与团队建设提供了启动基础。',
+      en: 'Secured early-stage support that helped establish the basis for technical validation and team formation.',
+    },
+  },
+  {
+    date: { zh: '2024.11', en: '2024.11' },
+    category: { zh: '机构成立', en: 'Institution Launch' },
+    title: {
+      zh: '成立 Energy Quant Research Institution',
+      en: 'Established Energy Quant Research Institution',
+    },
+    summary: {
+      zh: '形成围绕算法开发、电力市场建模与能源经济分析的研发实体。',
+      en: 'Established a research entity focused on algorithm development, power-market modeling, and energy-economics analysis.',
+    },
+  },
+  {
+    date: { zh: '2025.05', en: '2025.05' },
+    category: { zh: '合作拓展', en: 'Partnerships' },
+    title: {
+      zh: '与电力交易公司、英国高校及 BESS 企业达成合作',
+      en: 'Built partnerships with a power-trading company, a UK university, and BESS companies',
+    },
+    summary: {
+      zh: '围绕交易、研究与储能场景展开合作，为后续跨市场能力建设提供基础。',
+      en: 'Expanded collaboration across trading, research, and storage scenarios to support cross-market capability building.',
+    },
+  },
+  {
+    date: { zh: '2025.12', en: '2025.12' },
+    category: { zh: '赛事奖项', en: 'Recognition' },
+    title: {
+      zh: '深圳创新创业大赛海外分站赛一等奖',
+      en: 'Won first prize at the Shenzhen innovation competition overseas regional event',
+    },
+    summary: {
+      zh: '获得创新创业赛事认可，提升了公司在能源 AI 方向的外部可见度。',
+      en: 'Received external recognition that strengthened the company’s visibility in energy AI.',
+    },
+  },
+  {
+    date: { zh: '2026.01', en: '2026.01' },
+    category: { zh: '赛事奖项', en: 'Recognition' },
+    title: {
+      zh: '全国人工智能应用场景创新挑战赛种子组一等奖',
+      en: 'Won first prize in the seed group of the national AI application innovation challenge',
+    },
+    summary: {
+      zh: '在人工智能应用场景方向获得公开认可，进一步强化技术品牌叙事。',
+      en: 'Received public recognition in AI application scenarios, strengthening the technology narrative.',
+    },
+  },
+  {
+    date: { zh: '2026', en: '2026' },
+    category: { zh: '中国布局', en: 'China Launch' },
+    title: {
+      zh: '北京任能量化启动中国市场布局',
+      en: 'EnergyQuant Research launched its China market presence in Beijing',
+    },
+    summary: {
+      zh: '围绕中国能源市场改革窗口期，正式启动本地化运营、技术适配与市场合作布局。',
+      en: 'Started localized operations, technical adaptation, and market-facing collaboration around the China power-market reform window.',
+    },
+  },
+];
+
+const knowledgeTracks: KnowledgeTrack[] = [
+  {
+    key: 'foundation',
+    title: {
+      zh: '电力市场基础',
+      en: 'Power Market Fundamentals',
+    },
+    summary: {
+      zh: '建立对电力市场、交易机制与常见参与主体的基础理解。',
+      en: 'Build a shared understanding of power markets, trading mechanisms, and market participants.',
+    },
+    topics: [
+      { zh: '什么是电力市场', en: 'What is a power market?' },
+      { zh: '现货市场、辅助服务与虚拟电厂是什么', en: 'What are spot markets, ancillary services, and VPPs?' },
+    ],
+  },
+  {
+    key: 'observation',
+    title: {
+      zh: '市场机制与行业观察',
+      en: 'Market Structure And Observation',
+    },
+    summary: {
+      zh: '围绕中国与欧洲市场机制演进，整理公开、可分享的行业认知。',
+      en: 'Organize public, shareable observations on how Chinese and European market structures evolve.',
+    },
+    topics: [
+      { zh: '中国电力市场改革的关键阶段', en: 'Key phases of China power-market reform' },
+      { zh: '欧洲与中国电力市场有哪些关键差异', en: 'Key differences between European and Chinese power markets' },
+    ],
+  },
+  {
+    key: 'framework',
+    title: {
+      zh: '方法框架与系统认知',
+      en: 'Frameworks And System Thinking',
+    },
+    summary: {
+      zh: '只展示高层方法框架与系统认知，不展开交易细节与敏感实现。',
+      en: 'Show only high-level frameworks and system thinking without exposing trading details or sensitive implementation logic.',
+    },
+    topics: [
+      { zh: '储能项目有哪些公开可理解的收益来源', en: 'What are the public and explainable value sources for storage projects?' },
+      { zh: '从数据到预测到执行：能源 AI 系统的高层框架', en: 'From data to forecast to execution: a high-level framework for energy AI systems' },
+    ],
+  },
+];
+
 export const siteContent = {
   identity: {
     name: {
-      zh: '任能科技',
-      en: 'Reneng Technology',
+      zh: '任能量化',
+      en: 'EnergyQuant Research',
     },
     shortName: {
-      zh: '任能',
-      en: 'Reneng',
+      zh: '任能量化',
+      en: 'EnergyQuant Research',
     },
-    mark: '任',
+    mark: 'EQ',
     footerSummary: {
-      zh: '任能科技围绕能源市场智能化、算法体系与工程化交付展开长期建设，官网用于承接公司介绍、项目展示与后续公开内容分发。',
-      en: 'Reneng Technology builds long-term capabilities around energy-market intelligence, algorithm systems, and engineering delivery. This site is the public entry point for company positioning, project portfolio, and future knowledge distribution.',
+      zh: '任能量化围绕能源市场智能化、算法体系与工程化交付展开长期建设，官网用于承接公司介绍、解决方案与公开知识内容分发。',
+      en: 'EnergyQuant Research builds long-term capability around energy-market intelligence, algorithm systems, and engineering delivery. This site introduces the company, its solution directions, and public knowledge materials.',
     },
     address: {
       zh: '中国 · 北京',
@@ -119,623 +331,241 @@ export const siteContent = {
     { key: 'projects', path: '/projects', label: { zh: '解决方案', en: 'Solutions' } },
     { key: 'news', path: '/news', label: { zh: '发展历程', en: 'Milestones' } },
     { key: 'knowledge', path: '/knowledge', label: { zh: '知识中心', en: 'Knowledge' } },
-    { key: 'about', path: '/about', label: { zh: '关于任能', en: 'About' } },
-    { key: 'contact', path: '/contact', label: { zh: '联系任能', en: 'Contact' } },
+    { key: 'about', path: '/about', label: { zh: '关于我们', en: 'About' } },
+    { key: 'contact', path: '/contact', label: { zh: '联系我们', en: 'Contact' } },
   ] as NavItem[],
   home: {
     hero: {
       tagline: {
-        zh: 'AI-Powered Quantitative Trading',
-        en: 'AI-Powered Quantitative Trading',
+        zh: '研究驱动的能源量化系统',
+        en: 'Research-Led Energy Market Intelligence',
       },
       slogan: {
         zh: '建模。定价。执行。',
         en: 'We model. We price. We execute.',
       },
       subtitle: {
-        zh: 'EnergyQuant 构建可审计的 AI 与量化决策系统，连接欧洲市场验证与中国改革驱动的增长机会。',
-        en: "EnergyQuant builds auditable AI and quantitative systems for energy markets, bridging European market validation and China's reform-driven growth.",
+        zh: '任能量化构建可审计的 AI 与量化决策系统，连接欧洲市场验证与中国改革驱动的增长机会。',
+        en: "EnergyQuant Research builds auditable AI and quantitative systems for energy markets, bridging European market validation and China's reform-driven growth.",
       },
       ctaProjects: {
         zh: '查看项目',
-        en: 'View Projects',
+        en: 'View Solutions',
       },
       ctaKnowledge: {
         zh: '进入知识库',
         en: 'Explore Knowledge Base',
       },
     },
-    capabilities: {
+    solutionsPreview: {
       title: {
-        zh: '核心能力',
-        en: 'Core Capabilities',
+        zh: '三大业务解决方案',
+        en: 'Three Solution Directions',
       },
       subtitle: {
-        zh: 'What We Do',
-        en: 'What We Do',
+        zh: '围绕虚拟电厂、电力交易算法服务与储能资产增值，提供公开可解释的能力边界与合作入口。',
+        en: 'Public-facing solution directions across VPP aggregation, algorithmic market services, and storage optimization.',
       },
-      items: [
-        {
-          key: 'trading',
-          title: {
-            zh: '交易与短期策略',
-            en: 'Trading & Short-term Strategy',
-          },
-          subtitle: {
-            zh: 'Trading & Short-term Strategy',
-            en: '交易与短期策略',
-          },
-          description: {
-            zh: '电力现货市场实时报价与日内交易优化，基于概率模型的风险对冲策略。',
-            en: 'Real-time bidding and intraday optimization in spot power markets, with risk hedging based on probabilistic models.',
-          },
-          metrics: [
-            { zh: '实盘系统', en: 'Live System' },
-            { zh: '毫秒级响应', en: 'ms Response' },
-            { zh: '风险对冲', en: 'Risk Hedge' },
-          ],
-          deliverable: {
-            zh: '交付物：实盘交易系统 + 日内策略引擎',
-            en: 'Deliverable: Live trading system + intraday strategy engine',
-          },
-          accent: '#3b82f6',
-        },
-        {
-          key: 'bess',
-          title: {
-            zh: '灵活性与储能优化',
-            en: 'Flexibility & BESS Optimization',
-          },
-          subtitle: {
-            zh: 'Flexibility & BESS Optimization',
-            en: '灵活性与储能优化',
-          },
-          description: {
-            zh: '储能充放电策略优化，聚合分布式资源参与辅助服务市场。',
-            en: 'BESS charge/discharge optimization and aggregated distributed-resource participation in ancillary-services markets.',
-          },
-          metrics: [
-            { zh: '算法优化', en: 'Algorithm Optimized' },
-            { zh: '聚合控制', en: 'Aggregation Control' },
-            { zh: '辅助服务', en: 'Ancillary Services' },
-          ],
-          deliverable: {
-            zh: '交付物：BESS 优化算法 + 聚合控制模块',
-            en: 'Deliverable: BESS optimization algorithms + aggregation control module',
-          },
-          accent: '#22c55e',
-        },
-        {
-          key: 'platform',
-          title: {
-            zh: '数据到执行平台',
-            en: 'Data-to-Execution Platform',
-          },
-          subtitle: {
-            zh: 'Data-to-Execution Platform',
-            en: '数据到执行平台',
-          },
-          description: {
-            zh: '从数据接入、特征工程、模型训练到交易执行的端到端自动化平台。',
-            en: 'An end-to-end automation platform from data ingestion and feature engineering to model training and trade execution.',
-          },
-          metrics: [
-            { zh: '端到端', en: 'End-to-End' },
-            { zh: '可配置', en: 'Configurable' },
-            { zh: 'API 接口', en: 'API Interfaces' },
-          ],
-          deliverable: {
-            zh: '交付物：可配置流水线 + API 接口',
-            en: 'Deliverable: Configurable pipelines + API interfaces',
-          },
-          accent: '#8b5cf6',
-        },
-        {
-          key: 'research',
-          title: {
-            zh: '研究与市场机制',
-            en: 'Research & Market Design',
-          },
-          subtitle: {
-            zh: 'Research & Market Design',
-            en: '研究与市场机制',
-          },
-          description: {
-            zh: '电力市场机制设计、价格形成机制研究、政策影响量化分析。',
-            en: 'Electricity market design, price-formation research, and quantitative analysis of policy impacts.',
-          },
-          metrics: [
-            { zh: '市场设计', en: 'Market Design' },
-            { zh: '政策量化', en: 'Policy Quantification' },
-            { zh: '研究报告', en: 'Research Reports' },
-          ],
-          deliverable: {
-            zh: '交付物：研究报告 + 政策建议',
-            en: 'Deliverable: Research reports + policy recommendations',
-          },
-          accent: '#f59e0b',
-        },
-      ] as HomeCapabilityItem[],
-    },
-    evidence: {
-      title: {
-        zh: '验证证据',
-        en: 'Verified Evidence',
-      },
-      subtitle: {
-        zh: 'Verified Evidence',
-        en: 'Verified Evidence',
-      },
-      tagline: {
-        zh: 'Audit & Verification',
-        en: 'Audit & Verification',
-      },
-      metrics: [
-        {
-          key: 'accuracy',
-          label: {
-            zh: '预测准确率',
-            en: 'Prediction Accuracy',
-          },
-          value: 95,
-          unit: '%',
-          detail: {
-            zh: '德国 EPEX 市场 2024 H1',
-            en: 'Germany EPEX Market 2024 H1',
-          },
-          trend: {
-            zh: '+2.3% YoY',
-            en: '+2.3% YoY',
-          },
-          accent: '#3b82f6',
-        },
-        {
-          key: 'projects',
-          label: {
-            zh: '已交付项目',
-            en: 'Projects Delivered',
-          },
-          value: 75,
-          unit: '+',
-          detail: {
-            zh: '欧洲 + 中国市场',
-            en: 'Europe + China markets',
-          },
-          trend: {
-            zh: '+18 新增',
-            en: '+18 New',
-          },
-          accent: '#8b5cf6',
-        },
-        {
-          key: 'volume',
-          label: {
-            zh: '累计交易量',
-            en: 'Trading Volume',
-          },
-          value: 1200,
-          unit: 'GWh',
-          detail: {
-            zh: '2023-2025 实盘数据',
-            en: '2023-2025 Live Data',
-          },
-          trend: {
-            zh: '+340% 增长',
-            en: '+340% Growth',
-          },
-          accent: '#22c55e',
-        },
-        {
-          key: 'efficiency',
-          label: {
-            zh: '算法效率',
-            en: 'Algorithm Efficiency',
-          },
-          value: 300,
-          unit: '%',
-          detail: {
-            zh: '相比传统方法',
-            en: 'Compared to traditional methods',
-          },
-          trend: {
-            zh: '行业领先',
-            en: 'Industry Leading',
-          },
-          accent: '#f59e0b',
-        },
-      ] as EvidenceMetric[],
     },
     cta: {
       title: {
-        zh: '查看我们的项目',
-        en: 'Explore Our Projects',
+        zh: '查看我们的解决方案',
+        en: 'Explore Our Solution Directions',
       },
       subtitle: {
-        zh: '浏览可交付、可复用、可验证的工程案例。',
-        en: 'Browse deliverable, reusable, and verifiable engineering cases.',
+        zh: '浏览围绕能源市场场景构建的解决方案边界与公开能力说明。',
+        en: 'Review public-facing solution directions and capability boundaries for energy-market scenarios.',
       },
       button: {
-        zh: '浏览项目',
-        en: 'Browse Projects',
+        zh: '浏览解决方案',
+        en: 'Browse Solutions',
       },
       secondaryButton: {
-        zh: '联系任能',
-        en: 'Contact Reneng',
-      },
-      stats: {
-        zh: '75+ 工程案例 · 欧洲与中国市场',
-        en: '75+ Engineering Cases · Europe & China Markets',
+        zh: '联系任能量化',
+        en: 'Contact EnergyQuant Research',
       },
     },
   },
   projects: {
     title: {
-      zh: '项目展示',
-      en: 'Projects',
-    },
-    subtitle: {
-      zh: '展示我们在 AI+能源市场的落地案例与标准化解决方案。',
-      en: 'Showcasing our implementations and standardized solutions in AI+Energy markets.',
-    },
-    tagline: {
-      zh: 'PROJECTS PORTFOLIO',
-      en: 'PROJECTS PORTFOLIO',
-    },
-    stats: [
-      {
-        label: { zh: '项目总数', en: 'Total Projects' },
-        value: '75+',
-      },
-      {
-        label: { zh: '预测准确率', en: 'Prediction Accuracy' },
-        value: '97%',
-      },
-      {
-        label: { zh: '算法效率', en: 'Algorithm Efficiency' },
-        value: '300%',
-      },
-    ] as StatItem[],
-    caseStudiesTitle: {
-      zh: '案例研究',
-      en: 'Case Studies',
-    },
-    solutionsTitle: {
       zh: '解决方案',
       en: 'Solutions',
     },
-    featuresLabel: {
-      zh: '能力标签',
-      en: 'Feature Signals',
+    subtitle: {
+      zh: '围绕虚拟电厂聚合、电力交易算法服务与储能资产增值，提供公开可解释的业务边界与合作入口。',
+      en: 'Present public-facing business directions across VPP aggregation, power-market algorithm services, and storage optimization.',
     },
-    detailsLabel: {
-      background: { zh: '背景', en: 'Background' },
-      solution: { zh: '解决方案', en: 'Solution' },
-      results: { zh: '成果', en: 'Results' },
+    tagline: {
+      zh: 'SOLUTION DIRECTIONS',
+      en: 'SOLUTION DIRECTIONS',
     },
-    items: [
-      {
-        key: 'european-grid-analytics',
-        type: 'case-study',
-        domain: { zh: '电网分析', en: 'Grid Analytics' },
-        region: { zh: '欧洲', en: 'Europe' },
-        accent: '#3b82f6',
-        image: '/images/projects/project-1.jpg',
-        title: {
-          zh: '欧洲电网智能分析平台',
-          en: 'European Grid Analytics Platform',
-        },
-        description: {
-          zh: '基于深度学习的电网负荷预测与异常检测系统，已在德国、法国等多国电网部署。',
-          en: 'A deep-learning-based grid-load forecasting and anomaly-detection system deployed across Germany, France, and other European grids.',
-        },
-        features: [
-          { zh: '可交付', en: 'Deliverable' },
-          { zh: '可验证', en: 'Verifiable' },
-        ],
-        details: {
-          background: {
-            zh: '欧洲电网面临可再生能源接入增加带来的波动性挑战，需要更精准的预测能力。',
-            en: 'European grids face rising volatility from renewable integration and need more precise forecasting capability.',
-          },
-          solution: {
-            zh: '开发了基于 Transformer 的时序预测模型，融合多源数据（天气、历史负荷、市场信号），实现了 97% 的预测准确率。',
-            en: 'A Transformer-based time-series forecasting model combines weather, historical load, and market signals to deliver 97% prediction accuracy.',
-          },
-          results: {
-            zh: '预测误差降低 45%，异常检测响应时间缩短至 15 分钟，年节省运营成本约 320 万欧元。',
-            en: 'Forecast error was reduced by 45%, anomaly-response time dropped to 15 minutes, and annual operating costs fell by about EUR 3.2 million.',
-          },
-        },
-      },
-      {
-        key: 'cross-border-trading-optimization',
-        type: 'case-study',
-        domain: { zh: '交易系统', en: 'Trading System' },
-        region: { zh: '跨境', en: 'Cross-border' },
-        accent: '#22c55e',
-        image: '/images/projects/project-2.jpg',
-        title: {
-          zh: '跨境电力交易优化系统',
-          en: 'Cross-border Power Trading Optimization',
-        },
-        description: {
-          zh: '连接中国与欧洲电力市场的实时交易撮合与风控系统。',
-          en: 'A real-time trading-matching and risk-control system connecting Chinese and European power markets.',
-        },
-        features: [
-          { zh: '可交付', en: 'Deliverable' },
-          { zh: '可复用', en: 'Reusable' },
-          { zh: '可验证', en: 'Verifiable' },
-        ],
-        details: {
-          background: {
-            zh: '跨境电力交易面临汇率波动、政策差异、时区协调等复杂挑战。',
-            en: 'Cross-border power trading must handle exchange-rate volatility, policy differences, and timezone coordination.',
-          },
-          solution: {
-            zh: '构建了分布式交易引擎，支持多币种结算、智能合约执行、实时风险监控，实现毫秒级撮合。',
-            en: 'A distributed trading engine supports multi-currency settlement, smart-contract execution, and real-time risk monitoring with millisecond matching.',
-          },
-          results: {
-            zh: '交易效率提升 300%，风险事件减少 80%，已处理超过 10 亿欧元交易量。',
-            en: 'Trading efficiency improved by 300%, risk incidents fell by 80%, and the system has processed more than EUR 1 billion in volume.',
-          },
-        },
-      },
-      {
-        key: 'wind-farm-dispatch',
-        type: 'solution',
-        domain: { zh: 'AI 优化', en: 'AI Optimization' },
-        region: { zh: '中国', en: 'China' },
-        accent: '#8b5cf6',
-        image: '/images/projects/project-3.jpg',
-        title: {
-          zh: '风电场智能调度系统',
-          en: 'Wind Farm Intelligent Dispatch System',
-        },
-        description: {
-          zh: '基于强化学习的风电场集群优化调度，提升发电效率 15% 以上。',
-          en: 'A reinforcement-learning-based dispatch system for wind-farm clusters that improves generation efficiency by more than 15%.',
-        },
-        features: [
-          { zh: '可交付', en: 'Deliverable' },
-          { zh: '可复用', en: 'Reusable' },
-        ],
-        details: {
-          background: {
-            zh: '风电场传统调度依赖经验规则，难以应对复杂气象条件和电网约束。',
-            en: 'Traditional wind-farm dispatch depends on heuristics and struggles under complex weather and grid constraints.',
-          },
-          solution: {
-            zh: '开发了多智能体强化学习算法，实时优化各风机运行状态，协同考虑发电量、设备寿命与电网安全。',
-            en: 'A multi-agent reinforcement-learning algorithm optimizes turbine states in real time while balancing output, asset life, and grid safety.',
-          },
-          results: {
-            zh: '发电量提升 15.3%，运维成本降低 22%，系统可快速复制到不同风电场。',
-            en: 'Power output improved by 15.3%, O&M costs fell by 22%, and the system can be replicated rapidly across wind farms.',
-          },
-        },
-      },
-      {
-        key: 'smart-storage-management',
-        type: 'solution',
-        domain: { zh: '储能系统', en: 'Energy Storage' },
-        region: { zh: '欧洲', en: 'Europe' },
-        accent: '#f59e0b',
-        image: '/images/projects/project-4.jpg',
-        title: {
-          zh: '智能储能管理系统',
-          en: 'Smart Energy Storage Management',
-        },
-        description: {
-          zh: '集成电价预测、负荷预测的储能充放电优化，提升储能收益率 25%。',
-          en: 'Storage charge/discharge optimization that combines price and load forecasting to improve storage ROI by 25%.',
-        },
-        features: [
-          { zh: '可交付', en: 'Deliverable' },
-          { zh: '可验证', en: 'Verifiable' },
-        ],
-        details: {
-          background: {
-            zh: '储能系统盈利能力高度依赖充放电时机选择，传统方法难以捕捉市场机会。',
-            en: 'Storage profitability depends heavily on timing, and traditional methods often miss market opportunities.',
-          },
-          solution: {
-            zh: '构建了 LSTM + 注意力机制混合模型，预测电价曲线与负荷需求，并用动态规划优化充放电策略。',
-            en: 'A hybrid LSTM-and-attention model forecasts price curves and load demand, then uses dynamic programming to optimize storage dispatch.',
-          },
-          results: {
-            zh: '储能收益率提升 25%，峰谷价差套利准确率达到 89%，系统已部署于 12 个储能站。',
-            en: 'Storage ROI improved by 25%, peak-valley spread arbitrage hit 89% accuracy, and the system has been deployed at 12 storage sites.',
-          },
-        },
-      },
-    ] as PortfolioItem[],
+    labels: {
+      audience: { zh: '适用对象', en: 'Audience' },
+      scenarios: { zh: '典型场景', en: 'Scenarios' },
+      outputs: { zh: '输出内容', en: 'Outputs' },
+      value: { zh: '核心价值', en: 'Core Value' },
+    },
+    solutions: solutionTracks,
     cta: {
       title: {
         zh: '需要进一步沟通解决方案边界？',
         en: 'Need a closer discussion on solution scope?',
       },
       subtitle: {
-        zh: '如果你想进一步了解任能当前的能力边界、项目交付方式或合作路径，可以直接通过联系页面与我们交流。',
-        en: 'If you want to discuss Reneng’s capability boundaries, delivery format, or collaboration path in more detail, please reach out through the contact page.',
+        zh: '如果你想进一步了解任能量化的能力边界、合作方式与适用场景，可以通过联系页面与我们沟通。',
+        en: 'If you want to discuss capability boundaries, collaboration formats, or fit-for-purpose scenarios in more detail, please reach out through the contact page.',
       },
       button: {
-        zh: '联系任能',
-        en: 'Contact Reneng',
+        zh: '联系任能量化',
+        en: 'Contact EnergyQuant Research',
       },
     },
   },
   about: {
     title: {
-      zh: '关于任能',
-      en: 'About Reneng',
+      zh: '关于任能量化',
+      en: 'About EnergyQuant Research',
     },
     subtitle: {
       zh: '围绕能源市场研究、算法建模与工程交付持续建设能力。',
-      en: 'We keep building capabilities across energy-market research, algorithmic modeling, and engineering delivery.',
-    },
-    tagline: {
-      zh: 'RENENG TECHNOLOGY',
-      en: 'RENENG TECHNOLOGY',
+      en: 'We continue to build capability across energy-market research, algorithmic modeling, and engineering delivery.',
     },
     company: {
       title: {
-        zh: '任能是谁',
+        zh: '任能量化是谁',
         en: 'Who We Are',
       },
       content: {
-        zh: '任能科技聚焦能源市场智能化与工程化落地，围绕电价预测、储能优化、虚拟电厂与算法交易等方向持续建设能力。',
-        en: 'Reneng Technology focuses on intelligent systems and engineering delivery for energy markets, with long-term capability building across price forecasting, storage optimization, virtual power plants, and algorithmic trading.',
+        zh: '任能量化聚焦能源市场智能化与工程化落地，围绕电价预测、储能优化、虚拟电厂与交易辅助决策等方向持续建设能力。',
+        en: 'EnergyQuant Research focuses on intelligent systems and engineering delivery for energy markets, with long-term capability building across price forecasting, storage optimization, virtual power plants, and trading decision support.',
       },
       history: {
         zh: '我们长期关注电力市场改革、新型电力系统和灵活性资源运营带来的变化，强调研究、建模与交付之间的闭环，而不是停留在概念表达层面。',
-        en: 'We pay close attention to power-market reform, new power-system operations, and flexibility-resource participation, with a working style that closes the loop between research, modeling, and delivery rather than stopping at abstract concepts.',
+        en: 'We pay close attention to power-market reform, new power-system operations, and flexibility-resource participation, with a working style that closes the loop between research, modeling, and delivery rather than stopping at abstract positioning.',
       },
       coreBusiness: [
-        { zh: '电价预测模型', en: 'Electricity Price Forecasting' },
-        { zh: '储能策略优化', en: 'Energy Storage Strategy Optimization' },
-        { zh: '虚拟电厂运营', en: 'Virtual Power Plant Operation' },
-        { zh: 'AI 算法交易', en: 'AI Algorithm Trading' },
+        { zh: '电力市场研究', en: 'Power-market research' },
+        { zh: '储能与灵活性优化', en: 'Storage and flexibility optimization' },
+        { zh: '虚拟电厂与调度场景', en: 'VPP and dispatch scenarios' },
+        { zh: '交易辅助决策', en: 'Trading decision support' },
       ],
-      stats: [
+      highlights: [
         {
-          label: { zh: '研究驱动', en: 'Research-led' },
-          value: '从真实问题出发',
+          label: { zh: '公司使命', en: 'Mission' },
+          value: {
+            zh: '让算法成为能源系统第二运行机制',
+            en: 'Make algorithms the second operating mechanism of energy systems',
+          },
         },
         {
-          label: { zh: '工程交付', en: 'Engineering delivery' },
-          value: '强调可落地与可复用',
+          label: { zh: '能力路径', en: 'Capability Path' },
+          value: {
+            zh: '从数据到模型到策略到执行',
+            en: 'From data to models to strategy to execution',
+          },
         },
         {
-          label: { zh: '方法沉淀', en: 'Method accumulation' },
-          value: '持续积累模型与工具链',
+          label: { zh: '服务方式', en: 'Delivery Mode' },
+          value: {
+            zh: '研究驱动与工程交付并重',
+            en: 'Research-led with strong engineering delivery',
+          },
         },
         {
-          label: { zh: '合作方式', en: 'Collaboration style' },
-          value: '先沟通问题，再展开方案',
+          label: { zh: '合作原则', en: 'Collaboration' },
+          value: {
+            zh: '先理解问题，再展开方案',
+            en: 'Understand the problem before shaping the solution',
+          },
         },
-      ] as StatItem[],
+      ] as AboutHighlight[],
     },
     mission: {
       title: {
         zh: '我们的判断与坚持',
         en: 'What We Believe In',
       },
-      mission: {
-        label: { zh: '判断', en: 'Viewpoint' },
-        text: {
-          zh: '我们相信算法不只是辅助工具，而应该成为能源系统里可审计、可验证的一部分，真正参与到建模、定价与执行中。',
-          en: 'We believe algorithms should not stay as auxiliary tools. They should become an auditable and verifiable part of energy systems, participating directly in modeling, pricing, and execution.',
+      cards: [
+        {
+          key: 'mission',
+          title: { zh: '判断', en: 'Viewpoint' },
+          body: {
+            zh: '我们相信算法不只是辅助工具，而应该成为能源系统里可审计、可验证的一部分，真正参与到建模、定价与执行中。',
+            en: 'We believe algorithms should become an auditable and verifiable part of energy systems, participating directly in modeling, pricing, and execution.',
+          },
         },
-      },
-      vision: {
-        label: { zh: '方向', en: 'Direction' },
-        text: {
-          zh: '持续建设面向能源市场的算法与工程能力，在真实场景里把方法做深，把系统做稳。',
-          en: 'We aim to keep building algorithmic and engineering capability for energy markets, making the methods deeper and the systems steadier in real operating environments.',
+        {
+          key: 'vision',
+          title: { zh: '方向', en: 'Direction' },
+          body: {
+            zh: '持续建设面向能源市场的算法与工程能力，在真实场景里把方法做深，把系统做稳。',
+            en: 'We aim to keep building algorithmic and engineering capability for energy markets, making the methods deeper and the systems steadier in real operating environments.',
+          },
         },
-      },
-      values: {
-        label: { zh: '工作方式', en: 'How We Work' },
-        items: [
-          { zh: '先理解问题，再设计模型与系统。', en: 'Understand the market problem first, then design the model and system.' },
-          { zh: '尊重事实与数据，避免空泛判断。', en: 'Stay grounded in facts and data instead of generic claims.' },
-          { zh: '重视长期建设，而不是短期包装。', en: 'Favor long-term capability building over short-term packaging.' },
-        ],
-      },
+        {
+          key: 'values',
+          title: { zh: '工作方式', en: 'How We Work' },
+          body: {
+            zh: '研究、建模与交付必须闭环，公开表达也必须对得起真实能力边界。',
+            en: 'Research, modeling, and delivery must form a closed loop, and public communication must respect real capability boundaries.',
+          },
+          bullets: [
+            { zh: '先理解市场问题，再设计模型与系统。', en: 'Understand the market problem first, then design the model and system.' },
+            { zh: '尊重事实与数据，避免空泛判断。', en: 'Stay grounded in facts and data instead of generic claims.' },
+            { zh: '重视长期建设，而不是短期包装。', en: 'Favor long-term capability building over short-term packaging.' },
+          ],
+        },
+      ] as AboutNarrativeCard[],
     },
-    research: {
+    serviceTargets: {
       title: {
-        zh: '我们如何工作',
-        en: 'How We Work',
+        zh: '服务对象',
+        en: 'Who We Serve',
       },
-      subtitle: {
-        zh: '把研究、建模与交付连成一条线',
-        en: 'We connect research, modeling, and delivery into one line of work.',
+      summary: {
+        zh: '围绕能源市场中的关键参与者，提供从研究到系统化落地的能力支持。',
+        en: 'Support key participants in energy markets with capability that spans from research to systems delivery.',
       },
-      algorithm: {
-        title: {
-          zh: '研究与建模',
-          en: 'Research & Modeling',
-        },
-        items: [
-          { label: { zh: '预测精度', en: 'Accuracy' }, value: 97, unit: '%' },
-          { label: { zh: '响应速度', en: 'Response' }, value: 5, unit: 'ms' },
-          { label: { zh: '模型数量', en: 'Models' }, value: 50, unit: '+' },
-        ] as NumericStatItem[],
-      },
-      engineering: {
-        title: {
-          zh: '系统与交付',
-          en: 'Systems & Delivery',
-        },
-        items: [
-          { label: { zh: '交付项目', en: 'Projects' }, value: 75, unit: '+' },
-          { label: { zh: '客户满意度', en: 'Satisfaction' }, value: 98, unit: '%' },
-          { label: { zh: '复用率', en: 'Reusability' }, value: 85, unit: '%' },
-        ] as NumericStatItem[],
-      },
-    },
-    market: {
+      items: [
+        { zh: '储能企业', en: 'Energy storage companies' },
+        { zh: '电厂与发电集团', en: 'Power plants and generation groups' },
+        { zh: '售电公司', en: 'Electricity retailers' },
+        { zh: '产业园区与工商业场景', en: 'Industrial parks and C&I scenarios' },
+        { zh: '能源集团与项目开发方', en: 'Energy groups and project developers' },
+      ],
+    } as AboutListSection,
+    marketFocus: {
       title: {
-        zh: '业务关注区域',
-        en: 'Regions We Follow',
+        zh: '关注市场',
+        en: 'Markets We Follow',
       },
-      subtitle: {
-        zh: '围绕欧洲与中国电力市场实践，持续观察方法迁移与落地机会。',
-        en: 'We keep tracking practical opportunities across European and Chinese power markets, especially where methods can be adapted into real delivery.',
+      summary: {
+        zh: '围绕欧洲验证经验与亚洲市场落地机会，持续观察电力市场结构演进与应用边界。',
+        en: 'Track both European validation experience and Asian implementation opportunities across changing power-market structures.',
       },
-      label: {
-        zh: '展示范围',
-        en: 'Coverage',
+      items: [
+        { zh: '中国电力市场', en: 'China power markets' },
+        { zh: '日本电力市场', en: 'Japan power markets' },
+        { zh: '欧洲自由化电力市场经验', en: 'European liberalized power-market experience' },
+        { zh: '储能、虚拟电厂与灵活性场景', en: 'Storage, VPP, and flexibility scenarios' },
+      ],
+    } as AboutListSection,
+    workStyle: {
+      title: {
+        zh: '工作方式',
+        en: 'Working Style',
       },
-      projects: {
-        zh: '已交付项目',
-        en: 'Projects Delivered',
+      summary: {
+        zh: '把研究、建模、策略与执行连接成可以协同推进的工作框架。',
+        en: 'Connect research, modeling, strategy, and execution into one coordinated working framework.',
       },
-      totalProjects: {
-        zh: '项目展示覆盖：75+',
-        en: 'Portfolio coverage: 75+',
-      },
-      regions: [
-        {
-          flag: '🇪🇺',
-          region: { zh: '欧洲', en: 'Europe' },
-          locations: [
-            { zh: '德国', en: 'Germany' },
-            { zh: '法国', en: 'France' },
-            { zh: '英国', en: 'UK' },
-            { zh: '荷兰', en: 'Netherlands' },
-          ],
-          projects: 28,
-          highlight: true,
-        },
-        {
-          flag: '🇨🇳',
-          region: { zh: '中国', en: 'China' },
-          locations: [
-            { zh: '北京', en: 'Beijing' },
-            { zh: '上海', en: 'Shanghai' },
-            { zh: '深圳', en: 'Shenzhen' },
-            { zh: '杭州', en: 'Hangzhou' },
-          ],
-          projects: 35,
-          highlight: true,
-        },
-        {
-          flag: '🌏',
-          region: { zh: '其他地区', en: 'Other Regions' },
-          locations: [
-            { zh: '新加坡', en: 'Singapore' },
-            { zh: '日本', en: 'Japan' },
-            { zh: '韩国', en: 'South Korea' },
-          ],
-          projects: 12,
-          highlight: false,
-        },
-      ] as MarketPresenceItem[],
-    },
+      items: [
+        { zh: '数据 → 模型 → 策略 → 执行 的闭环框架', en: 'A closed loop from data to models to strategy to execution' },
+        { zh: '研究驱动的系统设计', en: 'Research-led system design' },
+        { zh: '工程化交付与持续迭代', en: 'Engineering delivery with continuous iteration' },
+        { zh: '对外表达坚持公开、安全、可解释', en: 'Public communication that stays safe, explainable, and responsible' },
+      ],
+    } as AboutListSection,
   },
   news: {
     heading: {
@@ -743,47 +573,10 @@ export const siteContent = {
       en: 'Milestones',
     },
     summary: {
-      zh: '这里展示任能面向能源市场智能化持续建设的发展历程与阶段性里程碑。',
-      en: "This page outlines Reneng's development journey and key milestones in building energy-market intelligence capabilities.",
+      zh: '这里展示任能量化在技术验证、机构建设与中国市场布局方面的重要公开节点。',
+      en: 'This page outlines the public milestones behind technical validation, institutional build-out, and China market launch.',
     },
-    items: [
-      {
-        date: { zh: '2026 之前', en: 'Pre-2026' },
-        category: { zh: '前期积累', en: 'Early Foundation' },
-        title: {
-          zh: '在成熟电力市场持续积累算法与建模经验',
-          en: 'Built early algorithm and market-modeling experience in mature power markets',
-        },
-        summary: {
-          zh: '在海外成熟电力市场持续开展价格预测、策略优化与算法验证，为后续本地化落地奠定方法与系统基础。',
-          en: 'Long-term work in mature power markets accumulated practical experience in forecasting, strategy optimization, and algorithm validation before local expansion.',
-        },
-      },
-      {
-        date: { zh: '2026', en: '2026' },
-        category: { zh: '中国布局', en: 'China Launch' },
-        title: {
-          zh: '任能在北京启动中国市场布局',
-          en: 'Reneng launches its China market presence in Beijing',
-        },
-        summary: {
-          zh: '围绕中国能源市场改革与亚太市场机会，任能作为本地化业务载体启动建设，聚焦策略中心、技术中心与生态化平台能力。',
-          en: 'Reneng begins local build-out in Beijing as the operating vehicle for China-market strategy, technical delivery, and ecosystem development.',
-        },
-      },
-      {
-        date: { zh: '持续推进', en: 'Ongoing' },
-        category: { zh: '持续建设', en: 'Capability Build-out' },
-        title: {
-          zh: '围绕能源量化与工程化交付持续扩展能力',
-          en: 'Reneng continues to expand its quant and engineering capabilities',
-        },
-        summary: {
-          zh: '当前持续围绕电价预测、储能优化、虚拟电厂、算法交易系统与研究输出等方向推进模型、系统与项目交付能力建设。',
-          en: 'Ongoing work continues across price forecasting, storage optimization, virtual power plants, algorithmic trading systems, and research-led delivery.',
-        },
-      },
-    ] as NewsItem[],
+    items: milestoneItems,
   },
   knowledge: {
     heading: {
@@ -791,40 +584,31 @@ export const siteContent = {
       en: 'Knowledge Hub',
     },
     summary: {
-      zh: '这里会逐步整理任能对外公开的研究文章、方法说明和项目实践材料，方便合作伙伴和关注者了解我们的工作方向。',
-      en: 'This section will gradually collect Reneng’s public research notes, method explainers, and project practice materials, so partners and readers can better understand how we work.',
+      zh: '知识中心用于整理任能量化对外公开、可分享、可复用的知识内容，帮助合作伙伴与关注者建立共同语言。',
+      en: 'The knowledge hub organizes public, shareable, and reusable materials that help partners and readers build a shared language around energy markets.',
     },
-    upcomingTitle: {
-      zh: '正在整理的公开内容',
-      en: 'Content in Preparation',
+    tagline: {
+      zh: 'PUBLIC KNOWLEDGE / SAFE SCOPE',
+      en: 'PUBLIC KNOWLEDGE / SAFE SCOPE',
     },
-    upcomingItems: [
-      {
-        zh: '电力市场研究与观察',
-        en: 'Power-market research and observations',
-      },
-      {
-        zh: '算法方法与建模思路',
-        en: 'Algorithm methods and modeling notes',
-      },
-      {
-        zh: '项目实践与解决方案拆解',
-        en: 'Project practice and solution breakdowns',
-      },
-    ],
+    safetyNote: {
+      zh: '本页仅收录公开知识，不涉及交易策略，不涉及模型参数，不涉及收益承诺或其他敏感商业信息。',
+      en: 'This section contains public knowledge only. It does not include trading strategies, model parameters, return commitments, or other sensitive business information.',
+    },
+    tracks: knowledgeTracks,
     contactNote: {
-      zh: '如果你想先了解某个方向，也可以直接通过联系页面与我们沟通。',
-      en: 'If you want to explore a specific topic earlier, you can reach out through the contact page.',
+      zh: '如果你希望围绕公开知识主题进一步交流，可以通过联系页面与我们沟通。',
+      en: 'If you want to discuss any of these public topics further, please reach out through the contact page.',
     },
   },
   contact: {
     heading: {
-      zh: '联系任能',
-      en: 'Contact Reneng',
+      zh: '联系任能量化',
+      en: 'Contact EnergyQuant Research',
     },
     summary: {
-      zh: '如果你希望了解任能、交流项目方向，或进一步沟通合作可能，欢迎通过以下方式联系我们。',
-      en: 'If you want to learn more about Reneng, discuss project directions, or explore collaboration, please reach out through the channels below.',
+      zh: '如果你希望了解公司情况、讨论合作场景或交流公开知识内容，欢迎通过以下方式联系我们。',
+      en: 'If you want to learn more about the company, discuss collaboration scenarios, or talk through public knowledge topics, please reach out through the channels below.',
     },
     channelsTitle: {
       zh: '联系方式',
@@ -839,8 +623,8 @@ export const siteContent = {
       en: 'Communication Notes',
     },
     noteBody: {
-      zh: '来信时可以简单介绍你的背景、关注的问题或合作方向，我们会根据内容尽快回复。',
-      en: 'When you write to us, a short note about your background, topic of interest, or collaboration direction will help us respond more efficiently.',
+      zh: '来信时可以简单说明你的背景、关注的问题和合作场景，我们会基于公开边界尽快回复。',
+      en: 'When you write to us, a short note about your background, topics of interest, and collaboration context will help us respond more efficiently within public communication boundaries.',
     },
     channels: [
       {
@@ -848,8 +632,8 @@ export const siteContent = {
         value: 'info@enyquant.com',
         href: 'mailto:info@enyquant.com',
         note: {
-          zh: '适用于公司介绍、项目沟通与合作交流。',
-          en: 'Use this for company introductions, project discussions, and collaboration inquiries.',
+          zh: '适用于公司介绍、合作沟通、研究与咨询交流。',
+          en: 'Use this for company introductions, collaboration, research, and advisory discussions.',
         },
       },
       {
@@ -862,117 +646,109 @@ export const siteContent = {
       },
     ] as ContactChannel[],
     inquiryTypes: [
-      {
-        zh: '了解任能和团队当前的工作方向',
-        en: 'Learn more about Reneng and the team’s current work directions',
-      },
-      {
-        zh: '交流项目场景、方法思路与合作可能',
-        en: 'Discuss project contexts, method ideas, and collaboration possibilities',
-      },
-      {
-        zh: '沟通知识内容与后续公开材料',
-        en: 'Talk about knowledge content and future public materials',
-      },
+      { zh: '商务合作与场景交流', en: 'Business collaboration and scenario discussions' },
+      { zh: '研究与咨询沟通', en: 'Research and advisory discussions' },
+      { zh: '行业交流与内容合作', en: 'Industry exchange and content collaboration' },
+      { zh: '人才加入', en: 'Talent and career conversations' },
     ],
   },
   seo: {
     default: {
       title: {
-        zh: '任能科技 | 能源市场算法与工程化服务',
-        en: 'Reneng Technology | Energy-market algorithms and engineering services',
+        zh: '任能量化 | 能源市场算法与工程化服务',
+        en: 'EnergyQuant Research | Energy-market algorithms and engineering services',
       },
       description: {
-        zh: '任能科技官网围绕公司介绍、项目展示、动态更新与后续公开内容分发入口展开。',
-        en: 'The Reneng Technology website presents the company, project portfolio, updates, and future public knowledge-distribution entry points.',
+        zh: '任能量化官网围绕公司介绍、解决方案、发展历程与公开知识内容展开。',
+        en: 'The EnergyQuant Research website presents the company, solution directions, milestones, and public knowledge materials.',
       },
       keywords: {
-        zh: '任能科技, EnergyQuant, 能源市场, 电价预测, 储能优化, 虚拟电厂, 项目展示',
-        en: 'Reneng Technology, EnergyQuant, energy markets, price forecasting, storage optimization, virtual power plant, project portfolio',
+        zh: '任能量化, EnergyQuant Research, 能源市场, 储能优化, 虚拟电厂, 电力交易算法, 知识中心',
+        en: 'EnergyQuant Research, energy markets, storage optimization, virtual power plants, power market algorithms, knowledge hub',
       },
     },
     home: {
       title: {
-        zh: '任能科技 | AI 驱动的能源量化交易平台',
-        en: 'Reneng Technology | AI-powered energy quantitative trading platform',
+        zh: '任能量化 | AI 驱动的能源量化交易平台',
+        en: 'EnergyQuant Research | AI-powered energy quantitative trading platform',
       },
       description: {
-        zh: 'EnergyQuant 构建可审计的 AI 与量化决策系统，连接欧洲市场验证与中国改革驱动的增长机会。',
-        en: "EnergyQuant builds auditable AI and quantitative systems for energy markets, bridging European market validation and China's reform-driven growth.",
+        zh: '任能量化构建可审计的 AI 与量化决策系统，连接欧洲市场验证与中国改革驱动的增长机会。',
+        en: "EnergyQuant Research builds auditable AI and quantitative systems for energy markets, bridging European market validation and China's reform-driven growth.",
       },
       keywords: {
-        zh: '能源量化, AI交易, 电力市场, 储能优化, 电价预测, 能源算法, 量化交易, EnergyQuant',
-        en: 'energy quantification, AI trading, power market, storage optimization, price forecasting, energy algorithms, quantitative trading, EnergyQuant',
+        zh: '能源量化, AI交易, 电力市场, 储能优化, 虚拟电厂, 能源算法, 量化系统',
+        en: 'energy quantification, AI trading, power markets, storage optimization, virtual power plants, energy algorithms, quantitative systems',
       },
     },
     projects: {
       title: {
-        zh: '任能科技 | 项目展示',
-        en: 'Reneng Technology | Projects',
+        zh: '任能量化 | 解决方案',
+        en: 'EnergyQuant Research | Solutions',
       },
       description: {
-        zh: '查看可交付、可复用、可验证的工程案例，覆盖欧洲与中国市场的交易系统、储能优化与智能电网解决方案。',
-        en: 'Explore deliverable, reusable, and verifiable engineering cases across European and Chinese markets, including trading systems, storage optimization, and smart-grid solutions.',
+        zh: '浏览任能量化围绕虚拟电厂聚合、电力交易算法服务与储能资产增值构建的公开解决方案方向。',
+        en: 'Browse public-facing solution directions across VPP aggregation, power-market algorithm services, and storage optimization.',
       },
       keywords: {
-        zh: '项目案例, 工程案例, 交易系统, 储能优化, 智能电网, 能源项目, AI 优化, 电网分析',
-        en: 'project cases, engineering portfolio, trading systems, storage optimization, smart grid, energy projects, AI optimization, grid analytics',
+        zh: '任能量化, 解决方案, 虚拟电厂, 储能优化, 电力交易算法服务',
+        en: 'EnergyQuant Research, solutions, virtual power plant, storage optimization, algorithmic market services',
       },
     },
     news: {
       title: {
-        zh: '任能科技 | 发展历程',
-        en: 'Reneng Technology | Milestones',
+        zh: '任能量化 | 发展历程',
+        en: 'EnergyQuant Research | Milestones',
       },
       description: {
-        zh: '查看任能科技的发展历程与阶段性里程碑，了解公司围绕能源市场智能化持续建设的路径。',
-        en: "Review Reneng Technology's development journey and milestone timeline in building energy-market intelligence capabilities.",
+        zh: '查看任能量化在技术验证、机构建设与中国市场布局方面的重要公开节点。',
+        en: 'Review public milestones across technical validation, institutional build-out, and China market launch.',
       },
       keywords: {
-        zh: '任能科技, 发展历程, 公司里程碑, 能源市场智能化, 能源量化',
-        en: 'Reneng Technology, milestones, development journey, energy market intelligence, energy quant',
+        zh: '任能量化, 发展历程, 公开里程碑, 能源 AI',
+        en: 'EnergyQuant Research, milestones, public timeline, energy AI',
       },
     },
     knowledge: {
       title: {
-        zh: '任能科技 | 知识中心',
-        en: 'Reneng Technology | Knowledge Hub',
+        zh: '任能量化 | 知识中心',
+        en: 'EnergyQuant Research | Knowledge Hub',
       },
       description: {
-        zh: '知识中心会逐步整理任能对外公开的研究文章、方法说明和项目实践材料。',
-        en: 'The knowledge hub will gradually collect Reneng’s public research notes, method explainers, and project practice materials.',
+        zh: '知识中心汇总任能量化对外公开、可分享、可复用的市场基础、行业观察与方法框架内容。',
+        en: 'The knowledge hub collects public, shareable, and reusable materials across market fundamentals, industry observation, and framework thinking.',
       },
       keywords: {
-        zh: '任能科技, 知识中心, 研究文章, 方法说明, 项目实践',
-        en: 'Reneng Technology, knowledge hub, research notes, method explainers, project practice',
+        zh: '任能量化, 知识中心, 电力市场基础, 行业观察, 方法框架',
+        en: 'EnergyQuant Research, knowledge hub, power market fundamentals, industry observation, system frameworks',
       },
     },
     about: {
       title: {
-        zh: '任能科技 | 关于任能',
-        en: 'Reneng Technology | About Reneng',
+        zh: '任能量化 | 关于我们',
+        en: 'EnergyQuant Research | About Us',
       },
       description: {
-        zh: '了解任能科技的工作方向、研究方式和业务关注区域。',
-        en: 'Learn about Reneng Technology’s working directions, research approach, and regions of focus.',
+        zh: '了解任能量化的公司使命、服务对象、关注市场与工作方式。',
+        en: 'Learn about EnergyQuant Research mission, audiences, markets of focus, and working style.',
       },
       keywords: {
-        zh: '任能科技, 关于任能, 公司介绍, 研究方法, 能源市场',
-        en: 'Reneng Technology, about Reneng, company overview, research approach, energy markets',
+        zh: '任能量化, 关于我们, 公司使命, 服务对象, 能源市场',
+        en: 'EnergyQuant Research, about us, mission, audiences, energy markets',
       },
     },
     contact: {
       title: {
-        zh: '任能科技 | 联系任能',
-        en: 'Reneng Technology | Contact',
+        zh: '任能量化 | 联系我们',
+        en: 'EnergyQuant Research | Contact',
       },
       description: {
-        zh: '通过联系页面与任能科技交流公司情况、项目方向和合作可能。',
-        en: 'Use the contact page to discuss company information, project directions, and collaboration possibilities with Reneng Technology.',
+        zh: '通过联系页面与任能量化交流公司情况、合作场景、研究与咨询话题。',
+        en: 'Use the contact page to discuss company information, collaboration scenarios, and research or advisory topics with EnergyQuant Research.',
       },
       keywords: {
-        zh: '任能科技, 联系方式, 商务合作, 项目咨询',
-        en: 'Reneng Technology, contact, collaboration, project inquiries',
+        zh: '任能量化, 联系方式, 商务合作, 研究咨询',
+        en: 'EnergyQuant Research, contact, business collaboration, research and advisory',
       },
     },
   } as Record<string, SeoEntry>,

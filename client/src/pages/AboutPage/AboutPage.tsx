@@ -2,7 +2,6 @@ import React from 'react';
 import { CompassIcon, LandmarkIcon, NetworkIcon, SparklesIcon } from 'lucide-react';
 import ScrollReveal from '@/components/ScrollReveal';
 import SEO from '@/components/SEO';
-import CountUpNumber from '@/components/CountUpNumber';
 import { localizedText, siteContent } from '@/content/site-content';
 import { useLanguage } from '@/components/LanguageContext';
 
@@ -27,14 +26,14 @@ const AboutPage: React.FC = () => {
       />
 
       <div className="relative overflow-hidden">
-        <section className="relative mx-auto max-w-7xl px-6 py-20 md:px-12 md:py-24 lg:px-20">
+        <section className="relative mx-auto max-w-7xl px-6 py-24 md:px-12 md:py-28 lg:px-20">
           <ScrollReveal direction="from-bottom" delay={100}>
-            <div className="space-y-5">
+            <div className="editorial-stack max-w-4xl">
               <p className="section-kicker">{localizedText(siteContent.identity.name, language)}</p>
-              <h1 className="font-display text-5xl font-semibold text-white md:text-7xl">
+              <h1 className="font-display text-[clamp(3rem,8vw,6rem)] font-semibold leading-[0.95] text-slate-950">
                 {localizedText(about.title, language)}
               </h1>
-              <p className="max-w-3xl text-base leading-8 text-slate-300/82 md:text-lg">
+              <p className="text-[1.08rem] leading-8 text-slate-700 md:text-[1.16rem]">
                 {localizedText(about.subtitle, language)}
               </p>
             </div>
@@ -43,32 +42,30 @@ const AboutPage: React.FC = () => {
 
         <section className="relative mx-auto max-w-7xl px-6 pb-16 md:px-12 lg:px-20">
           <ScrollReveal direction="from-bottom" delay={150}>
-            <div className="section-frame p-7 md:p-8 lg:p-10">
-              <div className="grid gap-8 lg:grid-cols-[1.08fr_0.92fr]">
-                <div>
-                  <div className="mb-5 flex items-center gap-3">
-                    <div className="flex size-11 items-center justify-center border border-cyan-300/18 bg-cyan-300/8 text-cyan-100">
+            <div className="surface-panel rounded-[2rem] p-8 md:p-10">
+              <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+                <div className="editorial-stack">
+                  <div className="flex items-center gap-3">
+                    <div className="flex size-11 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-700 shadow-sm">
                       <LandmarkIcon className="size-5" />
                     </div>
-                    <h2 className="font-display text-3xl font-semibold text-white">
+                    <h2 className="font-display text-3xl font-semibold text-slate-950 md:text-4xl">
                       {localizedText(about.company.title, language)}
                     </h2>
                   </div>
 
-                  <div className="space-y-4">
-                    <p className="text-sm leading-8 text-slate-300/78 md:text-base">
-                      {localizedText(about.company.content, language)}
-                    </p>
-                    <p className="text-sm leading-8 text-slate-300/72 md:text-base">
-                      {localizedText(about.company.history, language)}
-                    </p>
-                  </div>
+                  <p className="text-[1rem] leading-8 text-slate-700">
+                    {localizedText(about.company.content, language)}
+                  </p>
+                  <p className="text-[1rem] leading-8 text-slate-600">
+                    {localizedText(about.company.history, language)}
+                  </p>
 
-                  <div className="mt-6 flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2">
                     {about.company.coreBusiness.map((entry) => (
                       <span
                         key={localizedText(entry, language)}
-                        className="border border-cyan-300/14 bg-cyan-300/[0.04] px-3 py-1.5 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-slate-200/76"
+                    className="rounded-full border border-slate-200 bg-white px-3.5 py-2 text-[0.96rem] font-medium text-slate-700 shadow-sm"
                       >
                         {localizedText(entry, language)}
                       </span>
@@ -76,25 +73,15 @@ const AboutPage: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="grid gap-4 sm:grid-cols-2">
-                  {about.company.stats.map((stat, index) => (
-                    <div key={localizedText(stat.label, language)} className="metric-rail p-4">
-                      <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-cyan-100/52">
-                        {localizedText(stat.label, language)}
+                <div className="story-grid sm:grid-cols-2">
+                  {about.company.highlights.map((highlight) => (
+                    <div key={localizedText(highlight.label, language)} className="light-stage rounded-[1.4rem] p-5">
+                    <p className="text-[0.94rem] font-semibold tracking-[0.03em] text-sky-700">
+                        {localizedText(highlight.label, language)}
                       </p>
-                      <div className="mt-3 text-white">
-                        {Number.isNaN(Number(stat.value)) ? (
-                          <span className="text-base leading-7 text-slate-200/84">{stat.value}</span>
-                        ) : (
-                          <CountUpNumber
-                            end={Number(stat.value.replace(/[^\d.]/g, ''))}
-                            suffix={stat.value.replace(/[\d.]/g, '')}
-                            duration={1400}
-                            delay={index * 120}
-                            className="font-display text-4xl font-semibold text-white"
-                          />
-                        )}
-                      </div>
+                      <p className="mt-4 text-[1rem] leading-8 text-slate-800">
+                        {localizedText(highlight.value, language)}
+                      </p>
                     </div>
                   ))}
                 </div>
@@ -105,43 +92,28 @@ const AboutPage: React.FC = () => {
 
         <section className="relative mx-auto max-w-7xl px-6 pb-16 md:px-12 lg:px-20">
           <ScrollReveal direction="from-bottom" delay={190}>
-            <div className="space-y-7">
-              <div>
-                <p className="section-kicker">{localizedText(about.mission.title, language)}</p>
-              </div>
-              <div className="grid gap-5 lg:grid-cols-3">
-                {[
-                  {
-                    key: 'mission',
-                    title: localizedText(about.mission.mission.label, language),
-                    body: localizedText(about.mission.mission.text, language),
-                  },
-                  {
-                    key: 'vision',
-                    title: localizedText(about.mission.vision.label, language),
-                    body: localizedText(about.mission.vision.text, language),
-                  },
-                  {
-                    key: 'values',
-                    title: localizedText(about.mission.values.label, language),
-                    body: localizedText(about.mission.values.items[0], language),
-                    bullets: about.mission.values.items.slice(1).map((item) => localizedText(item, language)),
-                  },
-                ].map((item, index) => {
+            <div className="editorial-stack">
+              <p className="section-kicker">{localizedText(about.mission.title, language)}</p>
+              <div className="story-grid lg:grid-cols-3">
+                {about.mission.cards.map((item, index) => {
                   const Icon = missionIcons[index] ?? CompassIcon;
 
                   return (
-                    <article key={item.key} className="cut-corner-card p-6 md:p-7">
-                      <div className="mb-5 flex size-11 items-center justify-center border border-cyan-300/18 bg-cyan-300/8 text-cyan-100">
+                    <article key={item.key} className="surface-panel editorial-stack rounded-[1.8rem] p-6 md:p-7">
+                      <div className="flex size-11 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-700 shadow-sm">
                         <Icon className="size-5" />
                       </div>
-                      <h3 className="font-display text-2xl font-semibold text-white">{item.title}</h3>
-                      <p className="mt-4 text-sm leading-7 text-slate-300/78">{item.body}</p>
-                      {'bullets' in item && item.bullets ? (
-                        <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-300/76">
+                      <h3 className="font-display text-[2rem] font-semibold text-slate-950">
+                        {localizedText(item.title, language)}
+                      </h3>
+                      <p className="text-[1rem] leading-8 text-slate-700">
+                        {localizedText(item.body, language)}
+                      </p>
+                      {item.bullets ? (
+                        <ul className="space-y-3 text-[1rem] leading-8 text-slate-700">
                           {item.bullets.map((bullet) => (
-                            <li key={bullet} className="border-l border-cyan-300/16 pl-3">
-                              {bullet}
+                            <li key={localizedText(bullet, language)} className="border-l border-slate-200 pl-3">
+                              {localizedText(bullet, language)}
                             </li>
                           ))}
                         </ul>
@@ -154,110 +126,62 @@ const AboutPage: React.FC = () => {
           </ScrollReveal>
         </section>
 
-        <section className="relative mx-auto max-w-7xl px-6 pb-24 md:px-12 lg:px-20">
+        <section className="relative mx-auto max-w-7xl px-6 pb-28 md:px-12 lg:px-20">
           <ScrollReveal direction="from-bottom" delay={230}>
-            <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
-              <article className="section-frame p-7 md:p-8">
-                <div className="mb-6">
-                  <p className="section-kicker">{localizedText(about.research.title, language)}</p>
-                  <p className="mt-3 text-sm leading-7 text-slate-300/74">
-                    {localizedText(about.research.subtitle, language)}
+            <div className="story-grid lg:grid-cols-[1fr_1fr]">
+              <article className="surface-panel rounded-[1.8rem] p-7 md:p-8">
+                <div className="editorial-stack">
+                  <p className="section-kicker">{localizedText(about.serviceTargets.title, language)}</p>
+                  <p className="text-[1rem] leading-8 text-slate-700">
+                    {localizedText(about.serviceTargets.summary, language)}
                   </p>
-                </div>
-
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="font-display text-2xl font-semibold text-white">
-                      {localizedText(about.research.algorithm.title, language)}
-                    </h3>
-                    <div className="mt-4 grid gap-4 sm:grid-cols-3">
-                      {about.research.algorithm.items.map((item, index) => (
-                        <div key={localizedText(item.label, language)} className="metric-rail p-4">
-                          <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-cyan-100/52">
-                            {localizedText(item.label, language)}
-                          </p>
-                          <CountUpNumber
-                            end={item.value}
-                            suffix={item.unit}
-                            duration={1400}
-                            delay={index * 120}
-                            className="mt-3 font-display text-4xl font-semibold text-white"
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div>
-                    <h3 className="font-display text-2xl font-semibold text-white">
-                      {localizedText(about.research.engineering.title, language)}
-                    </h3>
-                    <div className="mt-4 grid gap-4 sm:grid-cols-3">
-                      {about.research.engineering.items.map((item, index) => (
-                        <div key={localizedText(item.label, language)} className="metric-rail p-4">
-                          <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-cyan-100/52">
-                            {localizedText(item.label, language)}
-                          </p>
-                          <CountUpNumber
-                            end={item.value}
-                            suffix={item.unit}
-                            duration={1400}
-                            delay={index * 120}
-                            className="mt-3 font-display text-4xl font-semibold text-white"
-                          />
-                        </div>
-                      ))}
-                    </div>
+                  <div className="flex flex-wrap gap-2">
+                    {about.serviceTargets.items.map((item) => (
+                      <span
+                        key={localizedText(item, language)}
+                    className="rounded-full border border-slate-200 bg-white px-3.5 py-2 text-[0.96rem] font-medium text-slate-700 shadow-sm"
+                      >
+                        {localizedText(item, language)}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </article>
 
-              <article className="section-frame p-7 md:p-8">
-                <div className="mb-6">
-                  <p className="section-kicker">{localizedText(about.market.title, language)}</p>
-                  <p className="mt-3 text-sm leading-7 text-slate-300/74">
-                    {localizedText(about.market.subtitle, language)}
+              <article className="surface-panel rounded-[1.8rem] p-7 md:p-8">
+                <div className="editorial-stack">
+                  <p className="section-kicker">{localizedText(about.marketFocus.title, language)}</p>
+                  <p className="text-[1rem] leading-8 text-slate-700">
+                    {localizedText(about.marketFocus.summary, language)}
                   </p>
+                  <div className="flex flex-wrap gap-2">
+                    {about.marketFocus.items.map((item) => (
+                      <span
+                        key={localizedText(item, language)}
+                    className="rounded-full border border-slate-200 bg-white px-3.5 py-2 text-[0.96rem] font-medium text-slate-700 shadow-sm"
+                      >
+                        {localizedText(item, language)}
+                      </span>
+                    ))}
+                  </div>
                 </div>
+              </article>
 
-                <div className="space-y-4">
-                  {about.market.regions.map((region) => (
-                    <div
-                      key={localizedText(region.region, language)}
-                      className="cut-corner-card p-4"
-                    >
-                      <div className="flex items-center gap-3">
-                        <span className="text-2xl">{region.flag}</span>
-                        <div>
-                          <p className="font-display text-xl font-semibold text-white">
-                            {localizedText(region.region, language)}
-                          </p>
-                          <p className="text-sm text-slate-300/72">
-                            {localizedText(about.market.projects, language)}: {region.projects}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="mt-4 flex flex-wrap gap-2">
-                        {region.locations.map((location) => (
-                          <span
-                            key={localizedText(location, language)}
-                            className="border border-cyan-300/14 bg-cyan-300/[0.04] px-3 py-1.5 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-slate-200/76"
-                          >
-                            {localizedText(location, language)}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-6 border-t border-cyan-300/12 pt-5">
-                  <p className="font-mono text-[0.68rem] uppercase tracking-[0.18em] text-cyan-100/52">
-                    {localizedText(about.market.label, language)}
+              <article className="surface-panel rounded-[1.8rem] p-7 md:p-8 lg:col-span-2">
+                <div className="editorial-stack">
+                  <p className="section-kicker">{localizedText(about.workStyle.title, language)}</p>
+                  <p className="text-[1rem] leading-8 text-slate-700">
+                    {localizedText(about.workStyle.summary, language)}
                   </p>
-                  <p className="mt-3 font-display text-2xl text-white">
-                    {localizedText(about.market.totalProjects, language)}
-                  </p>
+                  <div className="story-grid md:grid-cols-2">
+                    {about.workStyle.items.map((item) => (
+                      <div key={localizedText(item, language)} className="light-stage rounded-[1.4rem] p-5">
+                        <p className="text-[1rem] leading-8 text-slate-700">
+                          {localizedText(item, language)}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </article>
             </div>

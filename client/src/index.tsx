@@ -12,12 +12,16 @@ const MainApp = () => {
   return (
     <BrowserRouter basename={CLIENT_BASE_PATH}>
       <ErrorBoundary
-        fallbackRender={({ error }) => (
-          <div style={{ padding: 24, fontFamily: 'Inter, Arial, sans-serif' }}>
+        fallbackRender={({ error }) => {
+          const message = error instanceof Error ? error.message : 'Unknown error';
+
+          return (
+            <div style={{ padding: 24, fontFamily: 'Space Grotesk, Noto Sans SC, Arial, sans-serif' }}>
             <h1 style={{ marginBottom: 8 }}>Application Error</h1>
-            <pre style={{ whiteSpace: 'pre-wrap' }}>{error?.message || 'Unknown error'}</pre>
+            <pre style={{ whiteSpace: 'pre-wrap' }}>{message}</pre>
           </div>
-        )}
+          );
+        }}
       >
         <RoutesComponent />
       </ErrorBoundary>

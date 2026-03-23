@@ -26,48 +26,68 @@ const KnowledgeBasePage: React.FC = () => {
       />
 
       <div className="relative overflow-hidden">
-        <section className="relative mx-auto max-w-7xl px-6 py-20 md:px-12 md:py-24 lg:px-20">
+        <section className="relative mx-auto max-w-7xl px-6 py-24 md:px-12 md:py-28 lg:px-20">
           <ScrollReveal direction="from-bottom" delay={100}>
-            <div className="space-y-5">
+            <div className="editorial-stack max-w-4xl">
               <p className="section-kicker">{localizedText(siteContent.identity.name, language)}</p>
-              <h1 className="font-display text-5xl font-semibold text-white md:text-7xl">
+              <h1 className="font-display text-[clamp(3rem,8vw,6rem)] font-semibold leading-[0.95] text-slate-950">
                 {localizedText(knowledge.heading, language)}
               </h1>
-              <p className="max-w-3xl text-base leading-8 text-slate-300/82 md:text-lg">
+              <p className="text-[1.08rem] leading-8 text-slate-700 md:text-[1.16rem]">
                 {localizedText(knowledge.summary, language)}
               </p>
             </div>
           </ScrollReveal>
         </section>
 
-        <section className="relative mx-auto max-w-7xl px-6 pb-24 md:px-12 lg:px-20">
+        <section className="relative mx-auto max-w-7xl px-6 pb-28 md:px-12 lg:px-20">
           <ScrollReveal direction="from-bottom" delay={160}>
-            <div className="section-frame p-7 md:p-8 lg:p-10">
-              <div className="flex flex-wrap items-end justify-between gap-6">
-                <div>
-                  <p className="section-kicker">{localizedText(knowledge.upcomingTitle, language)}</p>
-                  <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-300/72">
+            <div className="surface-panel editorial-stack rounded-[2rem] p-8 md:p-10">
+              <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+                <div className="editorial-stack">
+                  <p className="section-kicker">{localizedText(knowledge.tagline, language)}</p>
+                  <h2 className="font-display text-3xl font-semibold text-slate-950 md:text-4xl">
+                    {language === 'zh' ? '公开知识入口' : 'Public Knowledge Entry'}
+                  </h2>
+                  <p className="text-[1rem] leading-8 text-slate-700">
+                    {localizedText(knowledge.safetyNote, language)}
+                  </p>
+                </div>
+                <div className="light-stage rounded-[1.6rem] p-6">
+                    <p className="text-[0.94rem] font-semibold tracking-[0.03em] text-sky-700">
+                    Public Knowledge / Safe Scope
+                  </p>
+                  <p className="mt-4 text-[1rem] leading-8 text-slate-700">
                     {localizedText(knowledge.contactNote, language)}
                   </p>
                 </div>
-                <p className="font-mono text-[0.74rem] uppercase tracking-[0.18em] text-cyan-100/52">
-                  Quant Lab / Public Notes
-                </p>
               </div>
 
-              <div className="mt-8 grid gap-5 lg:grid-cols-3">
-                {knowledge.upcomingItems.map((item, index) => {
+              <div className="story-grid lg:grid-cols-3">
+                {knowledge.tracks.map((track, index) => {
                   const Icon = icons[index] ?? FileTextIcon;
 
                   return (
-                    <article key={localizedText(item, language)} className="cut-corner-card p-6 md:p-7">
-                      <p className="font-display text-5xl text-white/18">0{index + 1}</p>
-                      <div className="mt-6 flex size-11 items-center justify-center border border-cyan-300/18 bg-cyan-300/8 text-cyan-100">
-                        <Icon className="size-5" />
+                    <article key={track.key} className="light-stage editorial-stack rounded-[1.8rem] p-6 md:p-7">
+                      <div className="flex items-center justify-between gap-4">
+                        <div className="flex size-12 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-700 shadow-sm">
+                          <Icon className="size-5" />
+                        </div>
+                        <p className="font-display text-5xl text-slate-300">0{index + 1}</p>
                       </div>
-                      <p className="mt-6 text-base leading-8 text-slate-200/84">
-                        {localizedText(item, language)}
+                      <h2 className="font-display text-[2rem] font-semibold text-slate-950">
+                        {localizedText(track.title, language)}
+                      </h2>
+                      <p className="text-[1rem] leading-8 text-slate-700">
+                        {localizedText(track.summary, language)}
                       </p>
+                      <ul className="space-y-3 text-[1rem] leading-7 text-slate-700">
+                        {track.topics.map((topic) => (
+                          <li key={localizedText(topic, language)} className="border-l border-slate-200 pl-3">
+                            {localizedText(topic, language)}
+                          </li>
+                        ))}
+                      </ul>
                     </article>
                   );
                 })}

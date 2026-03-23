@@ -24,41 +24,41 @@ const NewsPage: React.FC = () => {
       />
 
       <div className="relative overflow-hidden">
-        <section className="relative mx-auto max-w-7xl px-6 py-20 md:px-12 md:py-24 lg:px-20">
+        <section className="relative mx-auto max-w-7xl px-6 py-24 md:px-12 md:py-28 lg:px-20">
           <ScrollReveal direction="from-bottom" delay={100}>
-            <div className="space-y-5">
+            <div className="editorial-stack max-w-4xl">
               <p className="section-kicker">{localizedText(siteContent.identity.name, language)}</p>
-              <h1 className="font-display text-5xl font-semibold text-white md:text-7xl">
+              <h1 className="font-display text-[clamp(3rem,8vw,6rem)] font-semibold leading-[0.95] text-slate-950">
                 {localizedText(news.heading, language)}
               </h1>
-              <p className="max-w-3xl text-base leading-8 text-slate-300/82 md:text-lg">
+              <p className="text-[1.08rem] leading-8 text-slate-700 md:text-[1.16rem]">
                 {localizedText(news.summary, language)}
               </p>
             </div>
           </ScrollReveal>
         </section>
 
-        <section className="relative mx-auto max-w-7xl px-6 pb-24 md:px-12 lg:px-20">
-          <div className="space-y-5">
+        <section className="relative mx-auto max-w-7xl px-6 pb-28 md:px-12 lg:px-20">
+          <div className="story-grid">
             {news.items.map((item, index) => (
-              <ScrollReveal key={`${item.date.en}-${index}`} direction="from-bottom" delay={160 + index * 70}>
-                <article className="case-band p-6 md:p-7">
-                  <div className="grid gap-6 md:grid-cols-[190px_1fr]">
-                    <div className="border-b border-cyan-300/12 pb-4 md:border-b-0 md:border-r md:pb-0 md:pr-6">
-                      <div className="flex items-center gap-2 font-mono text-[0.72rem] uppercase tracking-[0.16em] text-cyan-100/62">
+              <ScrollReveal key={`${item.date.en}-${index}`} direction="from-bottom" delay={150 + index * 60}>
+                <article className="surface-panel rounded-[1.8rem] p-6 md:p-8">
+                  <div className="grid gap-6 md:grid-cols-[220px_1fr] md:items-start">
+                    <div className="accent-rule editorial-stack gap-4">
+                  <div className="flex items-center gap-2 text-[1rem] font-semibold tracking-[0.02em] text-slate-600">
                         <CalendarIcon className="size-4" />
                         <span>{localizedText(item.date, language)}</span>
                       </div>
-                      <p className="mt-4 inline-flex border border-cyan-300/14 bg-cyan-300/[0.04] px-3 py-1.5 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-slate-200/76">
+                  <p className="inline-flex w-fit rounded-full border border-slate-200 bg-white px-3.5 py-2 text-[0.95rem] font-medium text-sky-700 shadow-sm">
                         {localizedText(item.category, language)}
                       </p>
                     </div>
 
-                    <div className="space-y-3">
-                      <h2 className="font-display text-3xl font-semibold text-white">
+                    <div className="editorial-stack gap-3">
+                      <h2 className="font-display text-[2rem] font-semibold leading-tight text-slate-950 md:text-[2.3rem]">
                         {localizedText(item.title, language)}
                       </h2>
-                      <p className="text-sm leading-7 text-slate-300/78 md:text-base">
+                      <p className="text-[1rem] leading-8 text-slate-700">
                         {localizedText(item.summary, language)}
                       </p>
                     </div>

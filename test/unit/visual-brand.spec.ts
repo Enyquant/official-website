@@ -7,10 +7,10 @@ const read = (relativePath: string) =>
   fs.readFileSync(path.join(projectRoot, relativePath), 'utf8');
 
 describe('quant brand visual shell', () => {
-  it('switches the theme fonts to Space Grotesk + Noto Sans SC + JetBrains Mono', () => {
+  it('switches the theme fonts to Manrope + Noto Sans SC + JetBrains Mono', () => {
     const theme = read('client/src/tailwind-theme.css');
 
-    expect(theme).toContain('Space Grotesk');
+    expect(theme).toContain('Manrope');
     expect(theme).toContain('Noto Sans SC');
     expect(theme).not.toContain("family=Inter");
   });
@@ -20,9 +20,16 @@ describe('quant brand visual shell', () => {
 
     expect(styles).toContain('.quant-shell');
     expect(styles).toContain('.ambient-glow');
-    expect(styles).toContain('.signal-panel');
+    expect(styles).toContain('.light-stage');
+    expect(styles).toContain('.surface-panel');
+    expect(styles).toContain('.main-nav-link');
+    expect(styles).toContain('.light-stage');
+    expect(styles).toContain('.surface-panel');
+    expect(styles).toContain('.quant-button-primary');
     expect(styles).toContain('.metric-rail');
-    expect(styles).toContain('.case-band');
+    expect(styles).toContain('.story-grid');
+    expect(styles).toContain('.editorial-stack');
+    expect(styles).toContain('.accent-rule');
     expect(styles).toContain('@media (prefers-reduced-motion: reduce)');
   });
 
@@ -34,13 +41,20 @@ describe('quant brand visual shell', () => {
     const knowledge = read('client/src/pages/KnowledgeBasePage/KnowledgeBasePage.tsx');
     const contact = read('client/src/pages/ContactPage/ContactPage.tsx');
 
-    expect(layout).toContain('quant-shell');
-    expect(home).toContain('signal-panel');
-    expect(home).toContain('metric-rail');
-    expect(projects).toContain('case-band');
-    expect(about).toContain('section-frame');
-    expect(knowledge).toContain('cut-corner-card');
-    expect(contact).toContain('terminal-panel');
+    expect(layout).toContain('main-nav-link');
+    expect(home).toContain('light-stage');
+    expect(home).toContain('hero-slab');
+    expect(home).toContain('brand-spotlight');
+    expect(home).toContain('quant-button-primary');
+    expect(home).toContain('editorial-stack');
+    expect(projects).toContain('surface-panel');
+    expect(projects).toContain('story-grid');
+    expect(about).toContain('light-stage');
+    expect(about).toContain('editorial-stack');
+    expect(knowledge).toContain('surface-panel');
+    expect(knowledge).toContain('story-grid');
+    expect(contact).toContain('surface-panel');
+    expect(contact).toContain('metric-rail');
   });
 
   it('uses valid Tailwind arbitrary grid syntax for split layouts', () => {

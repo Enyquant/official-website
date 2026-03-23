@@ -1,7 +1,6 @@
-<<<<<<< HEAD
 # official-website
 
-EnergyQuant official website project (React + Rspack + NestJS).
+任能量化 / EnergyQuant Research official website project (React + Rspack + NestJS).
 
 ## Requirements
 
@@ -24,6 +23,26 @@ npm run preview:client:win
 
 Open: `http://127.0.0.1:4173`
 
+## Production Build
+
+Default production build is now static-client only:
+
+```bash
+npm run build
+```
+
+Output directory:
+
+```bash
+dist/client
+```
+
+If a full NestJS + client packaging build is needed for non-Cloudflare environments:
+
+```bash
+npm run build:fullstack
+```
+
 ## Full Local Dev (Windows)
 
 Set required environment variables in `.env`:
@@ -38,6 +57,3 @@ npm run dev:win
 ```
 
 Open: `http://127.0.0.1:8080`
-=======
-# official-website
->>>>>>> e467dfa325a6761deebd7de5b9bc6a9bbfd3aaa1
