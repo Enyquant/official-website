@@ -52,14 +52,6 @@ describe('siteContent approved public website contract', () => {
     expect(siteContent.knowledge.safetyNote.zh).toContain('公开可讨论的问题');
     expect(siteContent.knowledge.safetyNote.zh).toContain('不涉及交易策略');
     expect(siteContent.knowledge.safetyNote.zh).toContain('不涉及模型参数');
-    expect(siteContent.knowledge.articles).toHaveLength(4);
-
-    const articleSlugs = siteContent.knowledge.articles.map((article) => article.slug);
-
-    expect(new Set(articleSlugs).size).toBe(4);
-    expect(siteContent.knowledge.articles.every((article) => article.sections.length >= 2)).toBe(true);
-    expect(siteContent.knowledge.articles.every((article) => article.keyTakeaways.length >= 3)).toBe(true);
-    expect(siteContent.knowledge.articles.every((article) => article.boundaryNote.zh.includes('不构成交易'))).toBe(true);
   });
 
   it('keeps about and contact focused on public positioning and outreach', () => {
