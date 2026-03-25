@@ -44,7 +44,7 @@ const LayoutContent: React.FC = () => {
           <Link to="/" className="flex items-center gap-3 text-white">
             <span className="inline-flex rounded-2xl bg-white px-4 py-2.5 shadow-[0_12px_30px_rgba(2,8,22,0.22)]">
               <img
-                src="/logo-mark.png"
+                src="/logo-horizontal-v2.png"
                 alt={localizedText(brand.name, language)}
                 className="w-[220px] h-auto md:w-[250px]"
               />
@@ -91,7 +91,7 @@ const LayoutContent: React.FC = () => {
             <div className="surface-panel flex items-center justify-between gap-3 rounded-[1.5rem] px-5 py-4">
               <span className="inline-flex rounded-2xl bg-white px-4 py-2.5 shadow-[0_10px_24px_rgba(15,23,42,0.12)]">
                 <img
-                  src="/logo-mark.png"
+                  src="/logo-horizontal-v2.png"
                   alt={localizedText(brand.name, language)}
                   className="w-[220px] h-auto"
                 />
@@ -130,7 +130,7 @@ const LayoutContent: React.FC = () => {
               <div className="flex items-center gap-3">
                 <span className="inline-flex rounded-2xl bg-white px-4 py-2.5 shadow-[0_10px_24px_rgba(15,23,42,0.08)]">
                   <img
-                    src="/logo-mark.png"
+                    src="/logo-horizontal-v2.png"
                     alt={localizedText(brand.name, language)}
                     className="w-[250px] h-auto"
                   />
