@@ -42,11 +42,13 @@ const LayoutContent: React.FC = () => {
       <header className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-[#0d1b2f]/96 backdrop-blur-xl">
         <nav className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 md:h-22 md:px-12 lg:px-20">
           <Link to="/" className="flex items-center gap-3 text-white">
-            <img
-              src="/logo.png"
-              alt={localizedText(brand.name, language)}
-              className="h-10 w-auto max-w-[228px] drop-shadow-[0_12px_30px_rgba(2,8,22,0.28)] md:h-12 md:max-w-[260px]"
-            />
+            <span className="inline-flex rounded-md bg-white px-3 py-2 shadow-[0_12px_30px_rgba(2,8,22,0.22)]">
+              <img
+                src="/logo.png"
+                alt={localizedText(brand.name, language)}
+                className="h-10 w-auto max-w-[228px] md:h-12 md:max-w-[260px]"
+              />
+            </span>
           </Link>
 
           <div className="hidden items-center gap-10 lg:flex">
@@ -87,11 +89,13 @@ const LayoutContent: React.FC = () => {
         <div className="fixed inset-0 z-40 bg-[#0d1b2f]/96 pt-24 backdrop-blur-xl lg:hidden">
           <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 md:px-12 lg:px-20">
             <div className="surface-panel flex items-center justify-between gap-3 rounded-[1.5rem] px-5 py-4">
-              <img
-                src="/logo.png"
-                alt={localizedText(brand.name, language)}
-                className="h-11 w-auto max-w-[230px]"
-              />
+              <span className="inline-flex rounded-md bg-white px-3 py-2 shadow-[0_10px_24px_rgba(15,23,42,0.12)]">
+                <img
+                  src="/logo.png"
+                  alt={localizedText(brand.name, language)}
+                  className="h-11 w-auto max-w-[230px]"
+                />
+              </span>
               <span className="text-right text-[0.84rem] font-medium tracking-[0.04em] text-slate-700">
                 {language === 'zh' ? '量化研究 / 能源市场' : 'Quant Research / Energy Markets'}
               </span>
@@ -124,11 +128,13 @@ const LayoutContent: React.FC = () => {
           <div className="mx-auto grid max-w-7xl gap-8 px-6 md:grid-cols-[1.45fr_0.9fr_0.9fr] md:px-12 lg:px-20">
             <div className="space-y-5">
               <div className="flex items-center gap-3">
-                <img
-                  src="/logo.png"
-                  alt={localizedText(brand.name, language)}
-                  className="h-12 w-auto max-w-[280px]"
-                />
+                <span className="inline-flex rounded-md bg-white px-3 py-2 shadow-[0_10px_24px_rgba(15,23,42,0.08)]">
+                  <img
+                    src="/logo.png"
+                    alt={localizedText(brand.name, language)}
+                    className="h-12 w-auto max-w-[280px]"
+                  />
+                </span>
               </div>
               <p className="terminal-line">
                 {language === 'zh' ? 'Quant Systems / Energy Markets' : 'Quant Systems / Energy Markets'}
