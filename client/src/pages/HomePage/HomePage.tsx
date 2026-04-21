@@ -40,7 +40,10 @@ const HomePage: React.FC = () => {
                 <p className="section-kicker">{localizedText(home.hero.tagline, language)}</p>
                 <h1 className="font-display flex max-w-[56rem] flex-wrap items-end gap-x-10 gap-y-3 text-[clamp(3.4rem,8vw,6.7rem)] leading-[0.9] tracking-[-0.05em] text-slate-950 md:gap-x-12 md:gap-y-4 lg:gap-x-14">
                   {heroWords.map((word) => (
-                    <span key={word} className="inline-flex whitespace-nowrap">
+                    <span
+                      key={word}
+                      className={language === 'zh' ? 'inline-flex whitespace-nowrap' : 'inline-flex min-w-0 whitespace-normal'}
+                    >
                       {word}
                     </span>
                   ))}

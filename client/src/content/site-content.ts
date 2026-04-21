@@ -382,8 +382,8 @@ export const siteContent = {
         en: 'Explore Our Solution Directions',
       },
       subtitle: {
-        zh: '浏览围绕能源市场场景构建的解决方案边界与公开能力说明。',
-        en: 'Review public-facing solution directions and capability boundaries for energy-market scenarios.',
+        zh: '浏览围绕能源市场场景构建的解决方案方向与合作入口。',
+        en: 'Review solution directions and collaboration entry points for energy-market scenarios.',
       },
       button: {
         zh: '浏览解决方案',
@@ -401,7 +401,7 @@ export const siteContent = {
       en: 'Solutions',
     },
     subtitle: {
-      zh: '围绕电力交易 Agent、储能资产 Agent 与虚拟电厂/灵活性资源 Agent，提供公开可解释的业务边界与合作入口。',
+      zh: '围绕电力交易 Agent、储能资产 Agent 与虚拟电厂/灵活性资源 Agent，提供面向真实业务场景的解决方案入口。',
       en: 'Present public-facing business directions across power-trading agents, storage-asset agents, and VPP/flexibility-resource agents.',
     },
     tagline: {
@@ -417,12 +417,12 @@ export const siteContent = {
     solutions: solutionTracks,
     cta: {
       title: {
-        zh: '需要进一步沟通解决方案边界？',
-        en: 'Need a closer discussion on solution scope?',
+        zh: '需要进一步沟通适用场景？',
+        en: 'Need a closer discussion on fit-for-purpose scenarios?',
       },
       subtitle: {
-        zh: '如果你想进一步了解任能科技的能力边界、合作方式与适用场景，可以通过联系页面与我们沟通。',
-        en: 'If you want to discuss capability boundaries, collaboration formats, or fit-for-purpose scenarios in more detail, please reach out through the contact page.',
+        zh: '如果你想进一步了解任能科技的合作方式、交付路径与适用场景，可以通过联系页面与我们沟通。',
+        en: 'If you want to discuss collaboration formats, delivery paths, or fit-for-purpose scenarios in more detail, please reach out through the contact page.',
       },
       button: {
         zh: '联系任能科技',
@@ -632,8 +632,8 @@ export const siteContent = {
       en: 'Communication Notes',
     },
     noteBody: {
-      zh: '来信时可以简单说明你的背景、关注的问题和合作场景，我们会基于公开边界尽快回复。',
-      en: 'When you write to us, a short note about your background, topics of interest, and collaboration context will help us respond more efficiently within public communication boundaries.',
+      zh: '来信时可以简单说明你的背景、关注的问题和合作场景，我们会尽快评估并回复。',
+      en: 'When you write to us, a short note about your background, topics of interest, and collaboration context will help us evaluate and respond efficiently.',
     },
     channels: [
       {
