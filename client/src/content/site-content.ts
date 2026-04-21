@@ -351,7 +351,7 @@ export const siteContent = {
       chips: [
         { zh: 'Power Market Agents', en: 'Power Market Agents' },
         { zh: 'AI Decision Infrastructure', en: 'AI Decision Infrastructure' },
-        { zh: 'Agent-as-a-Service', en: 'Agent-as-a-Service' },
+        { zh: 'Scenario Decision Systems', en: 'Scenario Decision Systems' },
       ],
       spotlight: {
         zh: '把规则、知识、模型、执行与反馈组织成可复用、可治理、可迭代的 Agent 决策底座。',

@@ -13,7 +13,7 @@ Provide one release checklist for the official website, with GitHub Actions as t
 ## Preconditions
 1. Work from a reviewed branch before merging to `main`.
 2. Confirm no unreviewed public copy remains in `client/src/content/site-content.ts`.
-3. Confirm no public-facing metrics, case results, fake downloads, or fake form flows have been reintroduced.
+3. Confirm no unverified metrics, case results, fake downloads, or fake form flows have been reintroduced.
 
 ## Release Gate
 Run in `official-website/`:
@@ -37,10 +37,10 @@ Expected:
 
 ## Manual Review Checklist
 1. Home clearly explains who EnergyQuant is and what the site is for.
-2. Solutions page contains only solution scope, scenarios, and deliverables.
-3. About page keeps only public-safe company positioning and methods.
+2. Solutions page contains only approved scenarios, deliverables, and cooperation entry points.
+3. About page keeps only approved company positioning and methods.
 4. Knowledge page is an explicit placeholder with no fake downloads.
-5. Updates page contains only public-safe update items.
+5. Updates page contains only approved update items.
 6. Contact page has no unapproved online form flow or fake contact path.
 7. Chinese and English navigation, footer, and SEO titles stay aligned.
 

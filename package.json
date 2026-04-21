@@ -20,7 +20,7 @@
     "build:prod": "npm run build:server && npm run build:client",
     "build:server": "cross-env NODE_ENV=production nest build",
     "build:client": "cross-env NODE_ENV=production rspack build --config rspack.config.js --env mode=production",
-    "deploy": "npm run build:client && wrangler pages deploy ./dist/client",
+    "deploy": "npm run build && wrangler deploy",
     "build:server:win": "set NODE_ENV=production&& nest build",
     "build:client:win": "set NODE_ENV=production&& rspack build --config rspack.config.js --env mode=production",
     "preview:client:win": "npm run build:client:win && npx serve -s dist/client -l 4173",
@@ -37,7 +37,8 @@
     "type:check:server": "tsc --noEmit --project tsconfig.node.json",
     "lint": "concurrently \"npm run eslint\" \"npm run type:check\" \"npm run stylelint\"",
     "format": "prettier --write \"{server,client,test}/**/*.{js,ts,tsx,json,md}\"",
-    "upgrade": "fullstack-cli sync --disable-gen-openapi"
+    "upgrade": "fullstack-cli sync --disable-gen-openapi",
+    "preview": "npm run build && wrangler dev"
   },
   "dependencies": {
     "@lark-apaas/fullstack-nestjs-core": "^1.1.0",
@@ -192,6 +193,7 @@
     "typescript-eslint": "^8.44.0",
     "uuid": "11.0.5",
     "vaul": "^1.1.2",
+    "wrangler": "^4.84.0",
     "xlsx": "^0.18.5",
     "xlsx-js-style": "^1.2.0",
     "zod": "^3.25.76",
