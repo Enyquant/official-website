@@ -1,9 +1,9 @@
 import { siteContent } from '../../client/src/content/site-content';
 
-describe('siteContent public-safe website contract', () => {
+describe('siteContent approved public website contract', () => {
   it('keeps the public brand and launch navigation shell', () => {
-    expect(siteContent.identity.name.zh).toBe('任能量化');
-    expect(siteContent.identity.name.en).toBe('EnergyQuant Research');
+    expect(siteContent.identity.name.zh).toBe('任能科技');
+    expect(siteContent.identity.name.en).toBe('EnergyQuant Technology');
     expect(siteContent.identity.email).toBe('info@enyquant.com');
     expect(siteContent.navigation.map((item) => item.key)).toEqual([
       'home',
@@ -16,14 +16,19 @@ describe('siteContent public-safe website contract', () => {
     expect(siteContent.navigation.find((item) => item.key === 'projects')?.label.zh).toBe('解决方案');
   });
 
-  it('uses a public-safe home and solutions structure without evidence metrics', () => {
-    expect(siteContent.home.hero.slogan.zh).toBe('建模。定价。执行。');
-    expect(siteContent.home.hero.subtitle.zh).toContain('任能量化构建可审计的 AI 与量化决策系统');
+  it('uses an approved home and solutions structure without evidence metrics', () => {
+    expect(siteContent.home.hero.slogan.zh).toBe('AI 原生。决策基础设施。能源智能。');
+    expect(siteContent.home.hero.subtitle.zh).toContain('任能科技是一家构建面向电力市场');
+    expect(siteContent.home.hero.chips.map((item) => item.en)).toEqual([
+      'Power Market Agents',
+      'AI Decision Infrastructure',
+      'Scenario Decision Systems',
+    ]);
     expect('evidence' in siteContent.home).toBe(false);
     expect('stats' in siteContent.home.cta).toBe(false);
     expect(siteContent.projects.title.zh).toBe('解决方案');
     expect(siteContent.projects.solutions).toHaveLength(3);
-    expect(siteContent.projects.solutions.map((item) => item.key)).toEqual(['vpp', 'algo', 'bess']);
+    expect(siteContent.projects.solutions.map((item) => item.key)).toEqual(['algo', 'bess', 'vpp']);
   });
 
   it('uses approved milestones and excludes the rejected Yancheng award', () => {
@@ -40,11 +45,11 @@ describe('siteContent public-safe website contract', () => {
     expect(siteContent.news.items.some((item) => item.summary.zh.includes('盐城'))).toBe(false);
   });
 
-  it('turns knowledge into a public-safe knowledge entry', () => {
+  it('turns knowledge into an approved knowledge entry', () => {
     expect(siteContent.knowledge.tracks).toHaveLength(3);
     expect(siteContent.knowledge.tracks.flatMap((track) => track.topics)).toHaveLength(6);
-    expect(siteContent.knowledge.safetyNote.zh).toContain('不涉及交易策略');
-    expect(siteContent.knowledge.safetyNote.zh).toContain('不涉及模型参数');
+    expect(siteContent.knowledge.summary.zh).toContain('电力市场基础');
+    expect(siteContent.knowledge.safetyNote.zh).toContain('公开可讨论的问题');
   });
 
   it('keeps about and contact focused on public positioning and outreach', () => {

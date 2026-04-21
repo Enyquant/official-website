@@ -33,9 +33,6 @@ const KnowledgeBasePage: React.FC = () => {
               <h1 className="font-display text-[clamp(3rem,8vw,6rem)] font-semibold leading-[0.95] text-slate-950">
                 {localizedText(knowledge.heading, language)}
               </h1>
-              <p className="text-[1.08rem] leading-8 text-slate-700 md:text-[1.16rem]">
-                {localizedText(knowledge.summary, language)}
-              </p>
             </div>
           </ScrollReveal>
         </section>
@@ -47,15 +44,15 @@ const KnowledgeBasePage: React.FC = () => {
                 <div className="editorial-stack">
                   <p className="section-kicker">{localizedText(knowledge.tagline, language)}</p>
                   <h2 className="font-display text-3xl font-semibold text-slate-950 md:text-4xl">
-                    {language === 'zh' ? '公开知识入口' : 'Public Knowledge Entry'}
+                    {language === 'zh' ? '从问题进入能源市场' : 'Start From Market Questions'}
                   </h2>
                   <p className="text-[1rem] leading-8 text-slate-700">
-                    {localizedText(knowledge.safetyNote, language)}
+                    {localizedText(knowledge.summary, language)}
                   </p>
                 </div>
                 <div className="light-stage rounded-[1.6rem] p-6">
-                    <p className="text-[0.94rem] font-semibold tracking-[0.03em] text-sky-700">
-                    Public Knowledge / Safe Scope
+                  <p className="text-[0.94rem] font-semibold tracking-[0.03em] text-sky-700">
+                    {language === 'zh' ? '面向合作讨论' : 'For Collaboration Discussions'}
                   </p>
                   <p className="mt-4 text-[1rem] leading-8 text-slate-700">
                     {localizedText(knowledge.contactNote, language)}

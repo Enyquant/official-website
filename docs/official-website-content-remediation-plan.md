@@ -8,7 +8,7 @@ Status: active
 Last-Updated: 2026-03-09
 
 ## Objective
-Turn `official-website` into the first public-safe launch version for 任能量化 by:
+Turn `official-website` into the first approved public launch version for 任能量化 by:
 1. replacing scattered mock copy with one centralized typed content source,
 2. restructuring the site into `Corporate + Solutions`,
 3. preserving the stronger original Home, Projects, and About copy inside the new structure instead of flattening it into low-signal launch prose,
@@ -35,7 +35,7 @@ Out of scope:
 Allowed:
 1. company positioning and mission,
 2. public solution directions and approved portfolio-style case narratives,
-3. public-safe contact channels,
+3. approved contact channels,
 4. site updates and future content roadmap,
 5. metrics and cross-region context only when intentionally preserved from the reviewed prior website copy.
 
@@ -145,7 +145,7 @@ This plan is complete when:
 2. all launch pages follow the `Corporate + Solutions` structure,
 3. the approved original content voice is preserved on the core pages,
 4. the quant-brand shell is stable across the launch pages,
-5. no public-safe boundary violations remain,
+5. no unapproved public content remains,
 6. preview and release steps are documented and repeatable.
 
 ## Docs Sync

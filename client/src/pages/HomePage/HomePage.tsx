@@ -18,13 +18,10 @@ const HomePage: React.FC = () => {
   const seo = siteContent.seo.home;
   const breadcrumbs = [{ name: localizedText(siteContent.navigation[0].label, language), path: '/' }];
   const rawHeroSlogan = localizedText(home.hero.slogan, language);
-  const heroWords =
-    language === 'zh'
-      ? ['建模', '定价', '执行']
-      : rawHeroSlogan
-          .split(/[.]/)
-          .map((word) => word.trim())
-          .filter(Boolean);
+  const heroWords = rawHeroSlogan
+    .split(/[.。]/)
+    .map((word) => word.trim())
+    .filter(Boolean);
 
   return (
     <>
@@ -41,9 +38,16 @@ const HomePage: React.FC = () => {
             <ScrollReveal direction="from-bottom" delay={100}>
               <div className="editorial-stack max-w-3xl">
                 <p className="section-kicker">{localizedText(home.hero.tagline, language)}</p>
-                <h1 className="font-display flex max-w-[56rem] flex-wrap items-end gap-x-10 gap-y-3 text-[clamp(3.4rem,8vw,6.7rem)] leading-[0.9] tracking-[-0.05em] text-slate-950 md:gap-x-12 md:gap-y-4 lg:gap-x-14">
+                <h1 className="font-display flex max-w-[56rem] flex-wrap items-end gap-x-10 gap-y-3 text-[clamp(2.8rem,12vw,6.7rem)] leading-[0.9] tracking-[-0.05em] text-slate-950 md:gap-x-12 md:gap-y-4 md:text-[clamp(3.4rem,8vw,6.7rem)] lg:gap-x-14">
                   {heroWords.map((word) => (
-                    <span key={word} className="inline-flex whitespace-nowrap">
+                    <span
+                      key={word}
+                      className={
+                        language === 'zh'
+                          ? 'inline-flex whitespace-nowrap'
+                          : 'inline-flex min-w-0 whitespace-normal break-words [overflow-wrap:anywhere]'
+                      }
+                    >
                       {word}
                     </span>
                   ))}
@@ -53,9 +57,11 @@ const HomePage: React.FC = () => {
                 </p>
 
                 <div className="flex flex-wrap gap-3 text-[1rem] font-medium text-slate-600">
-                  <span className="soft-chip rounded-full px-4 py-2.5">Energy AI</span>
-                  <span className="soft-chip rounded-full px-4 py-2.5">Market Intelligence</span>
-                  <span className="soft-chip rounded-full px-4 py-2.5">Engineering Delivery</span>
+                  {home.hero.chips.map((chip) => (
+                    <span key={localizedText(chip, language)} className="soft-chip rounded-full px-4 py-2.5">
+                      {localizedText(chip, language)}
+                    </span>
+                  ))}
                 </div>
 
                 <div className="flex flex-wrap gap-4">
@@ -82,9 +88,7 @@ const HomePage: React.FC = () => {
                 <div className="accent-rule editorial-stack">
                   <p className="section-kicker">{localizedText(siteContent.identity.name, language)}</p>
                   <h2 className="font-display text-[2.1rem] font-semibold leading-tight text-slate-950 md:text-[2.45rem]">
-                    {language === 'zh'
-                      ? '研究、建模与工程交付连接成一条真正可落地的线。'
-                      : 'Research, modeling, and engineering delivery connected into one workable line.'}
+                    {localizedText(home.hero.spotlight, language)}
                   </h2>
                   <p className="max-w-xl text-[1.04rem] leading-8 text-slate-700">
                     {localizedText(about.company.history, language)}

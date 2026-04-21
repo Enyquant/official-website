@@ -46,8 +46,9 @@ Token requirements:
 2. Grant at minimum `Account` / `Cloudflare Pages` / `Edit`.
 
 Manual fallback:
-1. `npm run deploy` still performs a local direct upload with Wrangler.
-2. Use the manual path only when GitHub Actions is unavailable or when you need an emergency redeploy.
+1. `npm run deploy:pages` performs a local direct upload to Cloudflare Pages with Wrangler.
+2. Use the Pages manual path only when GitHub Actions is unavailable or when you need an emergency redeploy.
+3. `npm run deploy` targets the connected Cloudflare Workers project configured by `wrangler.jsonc`; keep it for Workers Git integration validation, not as the default production Pages path.
 
 ## 5. Legacy Server / Nginx Path
 If you ever need to host the static build outside Cloudflare Pages, upload the contents of `dist/client` to the target server and serve it as a single-page application.
