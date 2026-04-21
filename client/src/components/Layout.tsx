@@ -93,7 +93,7 @@ const LayoutContent: React.FC = () => {
                 className="w-[162px] h-auto"
               />
               <span className="text-right text-[0.84rem] font-medium tracking-[0.04em] text-slate-700">
-                {language === 'zh' ? '量化研究 / 能源市场' : 'Quant Research / Energy Markets'}
+                {language === 'zh' ? '能源智能 / 电力市场' : 'Energy Intelligence / Power Markets'}
               </span>
             </div>
             {navigation.map((item) => (
@@ -131,10 +131,7 @@ const LayoutContent: React.FC = () => {
                 />
               </div>
               <p className="terminal-line">
-                {language === 'zh' ? 'Quant Systems / Energy Markets' : 'Quant Systems / Energy Markets'}
-              </p>
-              <p className="max-w-xl text-[1.06rem] leading-8 text-slate-700">
-                {localizedText(brand.footerSummary, language)}
+                {language === 'zh' ? 'AI Decision Infrastructure / Energy Markets' : 'AI Decision Infrastructure / Energy Markets'}
               </p>
             </div>
 
