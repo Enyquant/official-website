@@ -38,11 +38,15 @@ const HomePage: React.FC = () => {
             <ScrollReveal direction="from-bottom" delay={100}>
               <div className="editorial-stack max-w-3xl">
                 <p className="section-kicker">{localizedText(home.hero.tagline, language)}</p>
-                <h1 className="font-display flex max-w-[56rem] flex-wrap items-end gap-x-10 gap-y-3 text-[clamp(3.4rem,8vw,6.7rem)] leading-[0.9] tracking-[-0.05em] text-slate-950 md:gap-x-12 md:gap-y-4 lg:gap-x-14">
+                <h1 className="font-display flex max-w-[56rem] flex-wrap items-end gap-x-10 gap-y-3 text-[clamp(2.8rem,12vw,6.7rem)] leading-[0.9] tracking-[-0.05em] text-slate-950 md:gap-x-12 md:gap-y-4 md:text-[clamp(3.4rem,8vw,6.7rem)] lg:gap-x-14">
                   {heroWords.map((word) => (
                     <span
                       key={word}
-                      className={language === 'zh' ? 'inline-flex whitespace-nowrap' : 'inline-flex min-w-0 whitespace-normal'}
+                      className={
+                        language === 'zh'
+                          ? 'inline-flex whitespace-nowrap'
+                          : 'inline-flex min-w-0 whitespace-normal break-words [overflow-wrap:anywhere]'
+                      }
                     >
                       {word}
                     </span>

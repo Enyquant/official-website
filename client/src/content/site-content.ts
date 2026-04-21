@@ -402,7 +402,7 @@ export const siteContent = {
     },
     subtitle: {
       zh: '围绕电力交易 Agent、储能资产 Agent 与虚拟电厂/灵活性资源 Agent，提供面向真实业务场景的解决方案入口。',
-      en: 'Present public-facing business directions across power-trading agents, storage-asset agents, and VPP/flexibility-resource agents.',
+      en: 'Present solution directions across power-trading agents, storage-asset agents, and VPP/flexibility-resource agents.',
     },
     tagline: {
       zh: 'SOLUTION DIRECTIONS',
@@ -697,7 +697,7 @@ export const siteContent = {
       },
       description: {
         zh: '浏览任能科技围绕电力交易 Agent、储能资产 Agent 与虚拟电厂/灵活性资源 Agent 构建的公开解决方案方向。',
-        en: 'Browse public-facing solution directions across power-trading agents, storage-asset agents, and VPP/flexibility-resource agents.',
+        en: 'Browse solution directions across power-trading agents, storage-asset agents, and VPP/flexibility-resource agents.',
       },
       keywords: {
         zh: '任能科技, 解决方案, 电力交易 Agent, 虚拟电厂, 储能优化, AI 决策基础设施',
