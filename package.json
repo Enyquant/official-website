@@ -21,6 +21,7 @@
     "build:server": "cross-env NODE_ENV=production nest build",
     "build:client": "cross-env NODE_ENV=production rspack build --config rspack.config.js --env mode=production",
     "deploy": "npm run build && wrangler deploy",
+    "deploy:pages": "npm run build && wrangler pages deploy ./dist/client",
     "build:server:win": "set NODE_ENV=production&& nest build",
     "build:client:win": "set NODE_ENV=production&& rspack build --config rspack.config.js --env mode=production",
     "preview:client:win": "npm run build:client:win && npx serve -s dist/client -l 4173",

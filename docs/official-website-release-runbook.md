@@ -54,16 +54,20 @@ Expected:
 2. Open preview locally and complete the manual review checklist.
 3. Open or update the PR.
 4. Confirm the preview deployment succeeds in GitHub Actions for that PR branch.
-5. Merge to `main`.
-6. Confirm the `Deploy Cloudflare Pages` workflow succeeds on `main` and updates production.
+5. Confirm the Cloudflare Workers Git integration check succeeds for the same commit.
+6. Merge to `main`.
+7. Confirm the `Deploy Cloudflare Pages` workflow succeeds on `main` and updates production.
 
 ## Deployment Automation
 1. The repository uses `.github/workflows/deploy-pages.yml` for Cloudflare Pages deployments.
 2. Pull requests create preview deployments by running `wrangler pages deploy dist/client --branch=<pr-branch>`.
 3. Pushes to `main` create production deployments by running `wrangler pages deploy dist/client --branch=main`.
-4. GitHub repository secrets must include `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
-5. The Cloudflare API token should have at minimum the `Account` / `Cloudflare Pages` / `Edit` permission on the target account.
-6. Local `npm run deploy` remains available as a manual fallback if GitHub Actions is unavailable.
+4. The Cloudflare Workers Git integration is also connected to this repo and is configured by `wrangler.jsonc`.
+5. The Workers integration exists to keep the external Cloudflare check green and prevent duplicate failure emails; the GitHub Actions Pages workflow remains the production deployment path unless explicitly changed.
+6. GitHub repository secrets must include `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID`.
+7. The Cloudflare API token should have at minimum the `Account` / `Cloudflare Pages` / `Edit` permission on the target account.
+8. Local `npm run deploy:pages` remains available as a manual Pages fallback if GitHub Actions is unavailable.
+9. Local `npm run deploy` targets the connected Workers project and should be used only when validating or repairing the Workers Git integration.
 
 ## Rollback
 1. Revert the merge commit if the release needs to be rolled back at code level.
