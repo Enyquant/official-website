@@ -43,9 +43,9 @@ const LayoutContent: React.FC = () => {
         <nav className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 md:h-22 md:px-12 lg:px-20">
           <Link to="/" className="flex items-center gap-3 text-white">
             <img
-              src="/logo-plaque-v5.png"
+              src="/logo.svg"
               alt={localizedText(brand.name, language)}
-              className="w-[170px] h-auto md:w-[192px]"
+              className="h-10 w-auto max-w-[228px] drop-shadow-[0_12px_30px_rgba(2,8,22,0.28)] md:h-12 md:max-w-[260px]"
             />
           </Link>
 
@@ -88,12 +88,12 @@ const LayoutContent: React.FC = () => {
           <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 md:px-12 lg:px-20">
             <div className="surface-panel flex items-center justify-between gap-3 rounded-[1.5rem] px-5 py-4">
               <img
-                src="/logo-plaque-v5.png"
+                src="/logo.svg"
                 alt={localizedText(brand.name, language)}
-                className="w-[162px] h-auto"
+                className="h-11 w-auto max-w-[230px]"
               />
               <span className="text-right text-[0.84rem] font-medium tracking-[0.04em] text-slate-700">
-                {language === 'zh' ? '能源智能 / 电力市场' : 'Energy Intelligence / Power Markets'}
+                {language === 'zh' ? '量化研究 / 能源市场' : 'Quant Research / Energy Markets'}
               </span>
             </div>
             {navigation.map((item) => (
@@ -125,13 +125,16 @@ const LayoutContent: React.FC = () => {
             <div className="space-y-5">
               <div className="flex items-center gap-3">
                 <img
-                  src="/logo-plaque-v5.png"
+                  src="/logo.svg"
                   alt={localizedText(brand.name, language)}
-                  className="w-[184px] h-auto"
+                  className="h-12 w-auto max-w-[280px]"
                 />
               </div>
               <p className="terminal-line">
-                {language === 'zh' ? 'AI Decision Infrastructure / Energy Markets' : 'AI Decision Infrastructure / Energy Markets'}
+                {language === 'zh' ? 'Quant Systems / Energy Markets' : 'Quant Systems / Energy Markets'}
+              </p>
+              <p className="max-w-xl text-[1.06rem] leading-8 text-slate-700">
+                {localizedText(brand.footerSummary, language)}
               </p>
             </div>
 

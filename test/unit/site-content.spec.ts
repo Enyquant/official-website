@@ -50,6 +50,8 @@ describe('siteContent approved public website contract', () => {
     expect(siteContent.knowledge.tracks.flatMap((track) => track.topics)).toHaveLength(6);
     expect(siteContent.knowledge.summary.zh).toContain('电力市场基础');
     expect(siteContent.knowledge.safetyNote.zh).toContain('公开可讨论的问题');
+    expect(siteContent.knowledge.safetyNote.zh).toContain('不涉及交易策略');
+    expect(siteContent.knowledge.safetyNote.zh).toContain('不涉及模型参数');
   });
 
   it('keeps about and contact focused on public positioning and outreach', () => {
